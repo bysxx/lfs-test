@@ -501,3 +501,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btn: {fileID: 9119570732075707782, guid: 7b3593e2eb7f2ab4f93614614ac0aa83, type: 3}
   p: {fileID: 5094005975486527676}
+  typingSpeed: 0.05
