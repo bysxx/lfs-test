@@ -6,7 +6,6 @@ public class EnemyController : MonoBehaviour, IHitable {
 
     [SerializeField] private int hp;
     [SerializeField] private GameObject deadEffect;
-    [SerializeField] private Animator animator;
 
     public void Dead() {
         Instantiate(deadEffect, transform.position, Quaternion.identity);
