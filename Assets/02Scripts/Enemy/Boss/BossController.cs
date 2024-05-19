@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossController : MonoBehaviour, IHitable {
+public class BossController : Controller, IHitable {
 
     [Header("Boss Info")]
     [SerializeField] private int hp;
     [SerializeField] private GameObject deadEffect;
     [SerializeField] private Animator animator;
+
 
     [Header("Spawn Info")]
     [SerializeField] private GameObject[] enemyPrefab;
@@ -15,38 +16,8 @@ public class BossController : MonoBehaviour, IHitable {
     [SerializeField] private GameObject spawnPos;
     [SerializeField] private int[] spawnCnt;
 
-#if UNITY_EDITOR
-    [Header("Debug")]
-    [SerializeField] private KeyCode spawnKey;
-    [SerializeField] private KeyCode nextPhaseKey;
-    [SerializeField] private KeyCode prevPhaseKey;
-#endif
+    public int curPhase = 0;
 
-    private List<GameObject> spawnedEnemies = new List<GameObject>();
-    private int curPhase = 0;
-
-#if UNITY_EDITOR
-    private void Update() {
-        if (Input.GetKeyDown(spawnKey)) {
-            StartCoroutine(SpawnEnemy(spawnCnt[curPhase]));
-        }
-        if (Input.GetKeyDown(nextPhaseKey)) {
-            curPhase++;
-            if (curPhase >= spawnCnt.Length) {
-                Define.Log("max phase");
-                curPhase = spawnCnt.Length - 1;
-            }
-        }
-        if (Input.GetKeyDown(prevPhaseKey)) {
-            curPhase--;
-            if (curPhase < 0) {
-                Define.Log("min phase");
-                curPhase = 0;
-            }
-        }
-
-    }
-#endif
 
     public void Dead() {
         animator.SetTrigger("Die");
@@ -73,7 +44,7 @@ public class BossController : MonoBehaviour, IHitable {
         foreach (Transform t in result) {
             Instantiate(spawnEffect, t.position, Quaternion.identity);
             Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)], t.position, Quaternion.identity);
-            yield return null;
+            yield return new WaitForSeconds(0.5f);
         }
     }
 

@@ -28,4 +28,8 @@ public class DialogueProvider : MonoBehaviour
         if (results.Count == 1) Access.DIalogueM.RegisterDialogue(results[0]);
         else Access.DIalogueM.RegisterDialogue(results);
     }
+
+    public void Provide(DialogueGraph graph) {
+        Access.DIalogueM.RegisterDialogue(graph);
+    }
 }
