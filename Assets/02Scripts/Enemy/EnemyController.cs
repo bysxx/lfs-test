@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour, IHitable {
+public class EnemyController : Controller, IHitable {
 
     [SerializeField] private int hp;
     [SerializeField] private GameObject deadEffect;
-    [SerializeField] private Animator animator;
 
     public void Dead() {
         Instantiate(deadEffect, transform.position, Quaternion.identity);

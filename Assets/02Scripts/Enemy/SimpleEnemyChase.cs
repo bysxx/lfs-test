@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 
 public class SimpleEnemyChase : MonoBehaviour
@@ -11,15 +12,19 @@ public class SimpleEnemyChase : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private GameObject bombEffect;
 
-
+    private Transform target;
 
     private void Awake() {
         rigid = GetComponent<Rigidbody>();
     }
 
+    private void Start() {
+        target = FindObjectOfType<XROrigin>().transform;
+    }
+
     private void FixedUpdate() {
-        if (Access.Player.transform != null) {
-            Vector3 dir = (Access.Player.transform.position - transform.position).normalized;
+        if (target != null) {
+            Vector3 dir = (target.position - transform.position).normalized;
             Vector3 moveVec = dir * speed * Time.fixedDeltaTime;
             rigid.rotation = Quaternion.LookRotation(dir);
             rigid.position += moveVec;
