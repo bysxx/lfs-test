@@ -235,6 +235,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   socketInteractor: {fileID: 6326221757513323125}
   allowedInteractableObject: {fileID: 6703897868440190450}
+  target: {fileID: 11400000, guid: 955b267c7db7de64b994a60e0a80c32b, type: 2}
+  quest: {fileID: 11400000, guid: 170e8233877f94667ac9b8f259b0a4b8, type: 2}
 --- !u!1 &4323683345823192324
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +246,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6822260626330537356}
+  - component: {fileID: 824353509257287324}
   m_Layer: 0
   m_Name: 1-1
   m_TagString: Untagged
@@ -268,6 +271,19 @@ Transform:
   - {fileID: 5516316534134975575}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &824353509257287324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4323683345823192324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7aefcbe7cdf44b6fab52661e748f554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quest: {fileID: 11400000, guid: 170e8233877f94667ac9b8f259b0a4b8, type: 2}
 --- !u!1 &9079198476594758422
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,6 +413,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   socketInteractor: {fileID: 8883194859941354007}
   allowedInteractableObject: {fileID: 6703897868440190452}
+  target: {fileID: 11400000, guid: 955b267c7db7de64b994a60e0a80c32b, type: 2}
+  quest: {fileID: 11400000, guid: 170e8233877f94667ac9b8f259b0a4b8, type: 2}
 --- !u!1001 &8634142832794628258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -519,9 +537,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4260113238040294141}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8686518377410224632, guid: 1b1197426fc4bfd4b9fe4ec3eda40847, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8169525586528430056}
     - targetCorrespondingSourceObject: {fileID: 3088243108032630102, guid: 1b1197426fc4bfd4b9fe4ec3eda40847, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2493596556960524051}
@@ -564,25 +579,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9154792491847918855, guid: 1b1197426fc4bfd4b9fe4ec3eda40847, type: 3}
   m_PrefabInstance: {fileID: 8634142832794628258}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1107346033677242714 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8686518377410224632, guid: 1b1197426fc4bfd4b9fe4ec3eda40847, type: 3}
-  m_PrefabInstance: {fileID: 8634142832794628258}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8169525586528430056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1107346033677242714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a95a1edc4a2c4c518e175b81d093295, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  socketInteractor: {fileID: 0}
-  allowedInteractableObject: {fileID: 0}
 --- !u!4 &3846578827436045422 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4806299823125316812, guid: 1b1197426fc4bfd4b9fe4ec3eda40847, type: 3}
