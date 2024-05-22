@@ -117,8 +117,9 @@ GameObject:
   - component: {fileID: 4260113238040294141}
   - component: {fileID: 31973850131087755}
   - component: {fileID: 6326221757513323125}
+  - component: {fileID: 6733963329046303327}
   m_Layer: 0
-  m_Name: LeftWheel Socket
+  m_Name: LefRearWheel Socket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,6 +221,22 @@ MonoBehaviour:
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
+--- !u!114 &6733963329046303327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2439868240999745920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a95a1edc4a2c4c518e175b81d093295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  socketInteractor: {fileID: 6326221757513323125}
+  allowedInteractableObject: {fileID: 6703897868440190450}
+  target: {fileID: 11400000, guid: 955b267c7db7de64b994a60e0a80c32b, type: 2}
+  quest: {fileID: 11400000, guid: 170e8233877f94667ac9b8f259b0a4b8, type: 2}
 --- !u!1 &4323683345823192324
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,6 +246,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6822260626330537356}
+  - component: {fileID: 824353509257287324}
   m_Layer: 0
   m_Name: 1-1
   m_TagString: Untagged
@@ -253,6 +271,20 @@ Transform:
   - {fileID: 5516316534134975575}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &824353509257287324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4323683345823192324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7aefcbe7cdf44b6fab52661e748f554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quests:
+  - {fileID: 11400000, guid: 170e8233877f94667ac9b8f259b0a4b8, type: 2}
 --- !u!1 &9079198476594758422
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +296,7 @@ GameObject:
   - component: {fileID: 2804444376304347996}
   - component: {fileID: 4205594633755662375}
   - component: {fileID: 8883194859941354007}
-  - component: {fileID: 2978110919381964792}
+  - component: {fileID: 8342159536183400306}
   m_Layer: 0
   m_Name: LeftDoor Socket
   m_TagString: Untagged
@@ -339,19 +371,7 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2978110919381964792}
-        m_TargetAssemblyTypeName: test, Assembly-CSharp
-        m_MethodName: DebugLog
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -380,7 +400,7 @@ MonoBehaviour:
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
---- !u!114 &2978110919381964792
+--- !u!114 &8342159536183400306
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -392,6 +412,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a95a1edc4a2c4c518e175b81d093295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  socketInteractor: {fileID: 8883194859941354007}
+  allowedInteractableObject: {fileID: 6703897868440190452}
+  target: {fileID: 11400000, guid: 955b267c7db7de64b994a60e0a80c32b, type: 2}
+  quest: {fileID: 11400000, guid: 170e8233877f94667ac9b8f259b0a4b8, type: 2}
 --- !u!1001 &8634142832794628258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -402,7 +426,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3088243108032467304, guid: 1b1197426fc4bfd4b9fe4ec3eda40847, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -30.8
+      value: 29.8
       objectReference: {fileID: 0}
     - target: {fileID: 3088243108032467304, guid: 1b1197426fc4bfd4b9fe4ec3eda40847, type: 3}
       propertyPath: m_LocalPosition.y
@@ -410,11 +434,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3088243108032467304, guid: 1b1197426fc4bfd4b9fe4ec3eda40847, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -221.7
+      value: 50.6
       objectReference: {fileID: 0}
     - target: {fileID: 3088243108032467308, guid: 1b1197426fc4bfd4b9fe4ec3eda40847, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.5
+      value: 35.3
       objectReference: {fileID: 0}
     - target: {fileID: 3088243108032467308, guid: 1b1197426fc4bfd4b9fe4ec3eda40847, type: 3}
       propertyPath: m_LocalPosition.y
@@ -422,7 +446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3088243108032467308, guid: 1b1197426fc4bfd4b9fe4ec3eda40847, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -142
+      value: 33.2
       objectReference: {fileID: 0}
     - target: {fileID: 3088243108032467312, guid: 1b1197426fc4bfd4b9fe4ec3eda40847, type: 3}
       propertyPath: m_LocalPosition.x
