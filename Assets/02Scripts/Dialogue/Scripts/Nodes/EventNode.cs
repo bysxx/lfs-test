@@ -7,7 +7,8 @@ using XNode;
 namespace Dialogue {
 	public class EventNode : DialogueBaseNode {
 
-		[SerializeField] private UnityEvent trigger;
+		public string eventName;
+		public UnityEvent trigger;
 
 		public override void Trigger() {
 			trigger?.Invoke();

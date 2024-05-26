@@ -12,6 +12,7 @@ namespace DialogueEditor {
             NodeEditorGUILayout.PortField(target.GetInputPort("input"), GUILayout.Width(100));
             EditorGUILayout.Space();
             NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("trigger"));
+            NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("eventName"));
 
             serializedObject.ApplyModifiedProperties();
         }

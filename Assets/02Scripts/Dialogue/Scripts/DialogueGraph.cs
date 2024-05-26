@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using XNode;
 
 namespace Dialogue {
@@ -21,6 +22,16 @@ namespace Dialogue {
         public void FindFirstNode() {
             //Find the first DialogueNode without any inputs. This is the starting node.
             currentNode = nodes.Find(x => x is ChatNode && x.Inputs.All(y => !y.IsConnected)) as ChatNode;
+        }
+
+        public EventNode FindEventNode(string name) {
+            return nodes.Find(x => x is EventNode && ((EventNode)x).eventName == name) as EventNode;
+        }
+
+        public void BindEventAtEventNode(string name, UnityAction action) {
+            EventNode eventNode = FindEventNode(name);
+            eventNode.trigger.RemoveAllListeners();
+            eventNode.trigger.AddListener(action);
         }
 
         public bool NextNode() {
