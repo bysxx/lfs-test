@@ -1,14 +1,14 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class DriverCameraFollow : MonoBehaviour
 {
-    public Transform carTransform; // ÀÚµ¿Â÷ÀÇ Transform ÄÄÆ÷³ÍÆ®
-    public Vector3 cameraOffset; // Ä«¸Ş¶óÀÇ ¿ÀÇÁ¼Â °ª
-    public Transform driverSeat; // ¿îÀüÀÚ ÁÂ¼®(Transform ÄÄÆ÷³ÍÆ®)
+    public Transform carTransform; // ìë™ì°¨ì˜ Transform ì»´í¬ë„ŒíŠ¸
+    public Vector3 cameraOffset; // ì¹´ë©”ë¼ì˜ ì˜¤í”„ì…‹ ê°’
+    public Transform driverSeat; // ìš´ì „ì ì¢Œì„(Transform ì»´í¬ë„ŒíŠ¸)
 
     void LateUpdate()
     {
-        // ÀÚµ¿Â÷ÀÇ À§Ä¡¿Í È¸ÀüÀ» ±âÁØÀ¸·Î Ä«¸Ş¶ó À§Ä¡ ¹× È¸Àü ¾÷µ¥ÀÌÆ®
+        // ìë™ì°¨ì˜ ìœ„ì¹˜ì™€ íšŒì „ì„ ê¸°ì¤€ìœ¼ë¡œ ì¹´ë©”ë¼ ìœ„ì¹˜ ë° íšŒì „ ì—…ë°ì´íŠ¸
         transform.position = carTransform.TransformPoint(cameraOffset);
         transform.rotation = driverSeat.rotation;
     }
