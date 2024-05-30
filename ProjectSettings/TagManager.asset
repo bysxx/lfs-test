@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - FxTemporaire
+  - Weapon
+  - SpecialBullet
+  - AnswerBullet
+  - QuizBullet
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
@@ -18,8 +23,8 @@ TagManager:
   - PlayerBullet
   - EnemyBullet
   - Border
-  - 
-  - 
+  - SpecialBullet
+  - Floor
   - 
   - 
   - 

@@ -6,32 +6,14 @@ using UnityEngine;
 public class QuestReporter : MonoBehaviour
 {
     [SerializeField]
-    private Category category;
+    private Category[] category;
     [SerializeField]
     private TaskTarget target;
     [SerializeField]
     private int conditionCount;
-    [SerializeField]
-    private string[] colliderTags;
 
-    private void OnTriggerEnter(Collider other)
+    public void Report(int i)
     {
-        ReportIfPassCondition(other);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        ReportIfPassCondition(collision);
-    }
-
-    public void Report()
-    {
-        Access.QuestM.ReceiveReport(category, target, conditionCount);
-    }
-
-    private void ReportIfPassCondition(Component other)
-    {
-        if (colliderTags.Any(x => other.CompareTag(x)))
-            Report();
+        Access.QuestM.ReceiveReport(category[i], target, conditionCount);
     }
 }

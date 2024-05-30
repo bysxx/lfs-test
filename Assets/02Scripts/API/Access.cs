@@ -22,5 +22,13 @@ public static class Access {
     /// </summary>
     public static QuestManager QuestM { get { return QuestManager.Instance; } }
 
+    /// <summary>
+    /// DialogueManager
+    /// </summary>
     public static DialogueManager DIalogueM { get { return DialogueManager.Instance; } }
+
+    /// <summary>
+    /// BossStageManager
+    /// </summary>
+    public static BossStageManager BossStageM { get { return BossStageManager.Instance; } }
 }

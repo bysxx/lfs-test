@@ -12,6 +12,7 @@ public class PlayerController : DontDestroySingleton<PlayerController>
 
     [field: SerializeField] private DynamicMoveProvider moveProvider { get; set; } = null;
 
+
     private void Start() {
         P_DInfo = new PlayerDInfo();
         P_SInfo = new PlayerSInfo();
@@ -20,5 +21,9 @@ public class PlayerController : DontDestroySingleton<PlayerController>
     // stop player
     public void StopPlayer() {
         moveProvider.moveSpeed = 0;
+    }
+
+    public void MovePlayer() {
+        moveProvider.moveSpeed = 1;
     }
 }

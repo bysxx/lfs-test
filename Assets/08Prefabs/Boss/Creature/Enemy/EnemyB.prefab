@@ -55,7 +55,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.5, y: 2.5, z: 2.5}
+  m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!54 &-2153697300038563796
 Rigidbody:
@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  target: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
   bombEffect: {fileID: 4593184484909914552, guid: 2e1e9506f5904a64b81744324fb7cd50, type: 3}
 --- !u!114 &-6780275326922971682
 MonoBehaviour:
@@ -111,9 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd099e7b586a424084543a96f48a13e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 2
+  hp: 1
   deadEffect: {fileID: 7226888052703040409, guid: 7ec363c8df426644ea85f8d6d570561c, type: 3}
-  animator: {fileID: 2948891830352150293}
 --- !u!1001 &6356250321473808113
 PrefabInstance:
   m_ObjectHideFlags: 0

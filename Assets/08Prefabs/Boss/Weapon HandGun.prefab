@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 1167364626166423530}
   - component: {fileID: 3365017892407208421}
   - component: {fileID: 4685286961848337070}
+  - component: {fileID: 2283994476359060529}
   m_Layer: 8
   m_Name: Weapon HandGun
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -274,10 +275,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce492313e084b5498e5efeebcb3b0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 7040209798933745306, guid: 77d1ec090971f0345a6550d80209f16d, type: 3}
+  normalBullet: {fileID: 7040209798933745306, guid: 77d1ec090971f0345a6550d80209f16d, type: 3}
+  specialBullet: {fileID: 6595389921944363027, guid: d248f30848112644ebb1055447f73094, type: 3}
+  shotEffect: {fileID: 6328846495821454552, guid: fcf518717c32f7e48862d9fcf6005791, type: 3}
   spawnPos: {fileID: 971919367877243901}
   leftActionReference: {fileID: -1440908411590050124, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   rightActionReference: {fileID: -5559804726918700286, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+--- !u!114 &2283994476359060529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3133199567049331465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf07ef1e3105844587d0619a740037a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  category:
+  - {fileID: 11400000, guid: 8700247020edaad459e00c6a4be98c27, type: 2}
+  - {fileID: 11400000, guid: 6f3c5a99cfcad2f49bf6da10f6b7f14f, type: 2}
+  target: {fileID: 11400000, guid: 5a43e9d631561be4783975ffb379f29b, type: 2}
+  conditionCount: 1
 --- !u!1 &4519651199701568546
 GameObject:
   m_ObjectHideFlags: 0

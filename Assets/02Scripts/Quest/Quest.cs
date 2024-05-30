@@ -107,6 +107,7 @@ public class Quest : ScriptableObject
 
         if (CurrentTaskGroup.IsAllTaskComplete)
         {
+
             if (currentTaskGroupIndex + 1 == taskGroups.Length)
             {
                 State = QuestState.WaitingForCompletion;

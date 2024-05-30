@@ -30,8 +30,17 @@ namespace Dialogue {
 
         public void BindEventAtEventNode(string name, UnityAction action) {
             EventNode eventNode = FindEventNode(name);
-            eventNode.trigger.RemoveAllListeners();
             eventNode.trigger.AddListener(action);
+        }
+
+        public void RemoveEventAtEventNode(string name, UnityAction action) {
+            EventNode eventNode = FindEventNode(name);
+            eventNode.trigger.RemoveListener(action);
+        }
+
+        public void RemoveAllEventAtEventNode(string name) {
+            EventNode eventNode = FindEventNode(name);
+            eventNode.trigger.RemoveAllListeners();
         }
 
         public bool NextNode() {
