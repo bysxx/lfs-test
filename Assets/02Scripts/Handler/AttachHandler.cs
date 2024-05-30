@@ -3,8 +3,10 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class AttachHandler : MonoBehaviour
 {
-        public XRSocketInteractor socketInteractor;
-    public GameObject allowedInteractableObject;
+    [SerializeField] private XRSocketInteractor socketInteractor;
+    [SerializeField] private GameObject allowedInteractableObject;
+    [SerializeField] private TaskTarget target; 
+    [SerializeField] private Quest quest;
 
     void Start()
     {
@@ -33,8 +35,7 @@ public class AttachHandler : MonoBehaviour
         }
         else
         {
-            Debug.Log("Object placed in socket: " + interactable.gameObject.name);
-            Debug.Log("Interactor: " + interactor.gameObject.name);
+            Access.QuestM.ReceiveReport(quest.Category, target, 1);
         }
     }
 }
