@@ -1,45 +1,51 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
-public class DialController : MonoBehaviour
+public class DialInteraction : MonoBehaviour
 {
-    private bool isGrabbed = false;
-    private Transform initialGrabTransform;
+    private XRGrabInteractable grabInteractable;
     private Transform dialTransform;
+    private Vector3 initialRotation;
 
     void Start()
     {
+        grabInteractable = GetComponent<XRGrabInteractable>();
         dialTransform = transform;
+        initialRotation = dialTransform.localEulerAngles;
+        grabInteractable.onSelectEntered.AddListener(OnGrab);
+        grabInteractable.onSelectExited.AddListener(OnRelease);
+    }
+
+    private void OnGrab(XRBaseInteractor interactor)
+    {
+        
+    }
+
+    private void OnRelease(XRBaseInteractor interactor)
+    {
+       
     }
 
     void Update()
     {
-        if (isGrabbed)
+        
+        if (grabInteractable.isSelected)
         {
-            Vector3 direction = initialGrabTransform.position - dialTransform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            angle = Mathf.Clamp(angle, 0, 360);  
-            dialTransform.rotation = Quaternion.Euler(0, 0, angle);
-
-            
-            if (angle >= 270 && angle <= 280)
-            {
-                
-                Debug.Log("Dial rotated to the desired angle!");
-            }
+            Vector3 currentRotation = dialTransform.localEulerAngles;
+            float deltaRotation = CalculateDeltaRotation(currentRotation);
+            ApplyRotation(deltaRotation);
         }
     }
 
-    public void OnGrab(Transform grabTransform)
+    private float CalculateDeltaRotation(Vector3 currentRotation)
     {
-        isGrabbed = true;
-        initialGrabTransform = grabTransform;
+        
+        return currentRotation.z - initialRotation.z;
     }
 
-    public void OnRelease()
+    private void ApplyRotation(float deltaRotation)
     {
-        isGrabbed = false;
+        
+        dialTransform.localEulerAngles = new Vector3(initialRotation.x, initialRotation.y, initialRotation.z + deltaRotation);
     }
 }
-
