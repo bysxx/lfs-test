@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ceb64a1e35fedb4a9eae878ad59d1b7, type: 3}
   m_Name: Target_DriveCar
   m_EditorClassIdentifier: 
-  value: 
+  value: 02
