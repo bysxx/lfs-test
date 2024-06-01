@@ -36,4 +36,5 @@ public static class Access {
     /// GameManager
     /// </summary>
     public static GameManager GameM { get { return GameManager.Instance; } }
+    public static SceneManager SceneM { get { return SceneManager.Instance; } }
 }
