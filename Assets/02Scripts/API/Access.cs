@@ -23,4 +23,6 @@ public static class Access {
     public static QuestManager QuestM { get { return QuestManager.Instance; } }
 
     public static DialogueManager DIalogueM { get { return DialogueManager.Instance; } }
+
+    public static SceneManager SceneM { get { return SceneManager.Instance; } }
 }
