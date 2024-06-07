@@ -458,6 +458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 100
+  enableDebugLogs: 1
 --- !u!54 &2071733605782958982
 Rigidbody:
   m_ObjectHideFlags: 0
