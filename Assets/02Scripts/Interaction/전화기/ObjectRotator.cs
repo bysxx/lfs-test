@@ -17,7 +17,7 @@ public class DialController : MonoBehaviour
             float rotationAmount = rotationInput * rotationSpeed * Time.deltaTime;
 
             // 현재 회전값을 가져와서 Y 축을 기준으로 회전을 적용합니다.
-            transform.Rotate(Vector3.up, rotationAmount, Space.World);
+            transform.Rotate(Vector3.up, rotationAmount, Space.Self);
         }
 
         // 디버그 로그가 활성화된 경우 현재 회전 각도를 기록합니다.
