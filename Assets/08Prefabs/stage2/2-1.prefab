@@ -663,7 +663,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.30070576, w: 0.953717}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.8844793, y: 3.8844788, z: 3.8844798}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9122213727202005845}
@@ -1019,7 +1019,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 100
-  enableDebugLogs: 0
+  enableDebugLogs: 1
+  minRotation: 0
+  maxRotation: 360
+  returnSpeed: 100
+  inputTimeout: 0.5
 --- !u!1 &3824818241937577954
 GameObject:
   m_ObjectHideFlags: 0
