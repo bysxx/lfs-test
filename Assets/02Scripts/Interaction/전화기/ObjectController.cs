@@ -6,7 +6,7 @@ public class ObjectController : MonoBehaviour
     private Quaternion originalRotation;
     private bool isHeld = false;
     private bool isReturning = false;
-    public float returnSpeed = 10f; // ¿ø·¡ À§Ä¡·Î µ¹¾Æ°¡´Â ¼Óµµ, ¿øÇÏ´Â ¼Óµµ·Î Á¶Á¤ °¡´É
+    public float returnSpeed = 10f; // ì›ë˜ ìœ„ì¹˜ë¡œ ëŒì•„ê°€ëŠ” ì†ë„, ì›í•˜ëŠ” ì†ë„ë¡œ ì¡°ì • ê°€ëŠ¥
 
     void Start()
     {
@@ -18,11 +18,11 @@ public class ObjectController : MonoBehaviour
     {
         if (isReturning)
         {
-            // ºÎµå·´°Ô ¿ø·¡ À§Ä¡¿Í È¸ÀüÀ¸·Î ÀÌµ¿
+            // ë¶€ë“œëŸ½ê²Œ ì›ë˜ ìœ„ì¹˜ì™€ íšŒì „ìœ¼ë¡œ ì´ë™
             transform.position = Vector3.Lerp(transform.position, originalPosition, Time.deltaTime * returnSpeed);
             transform.rotation = Quaternion.Slerp(transform.rotation, originalRotation, Time.deltaTime * returnSpeed);
 
-            // ¿ø·¡ À§Ä¡¿Í È¸Àü¿¡ °ÅÀÇ µµ´ŞÇÏ¸é ÀÌµ¿ ÁßÁö¸¦ À§ÇØ ÇÃ·¡±×¸¦ ¸®¼Â
+            // ì›ë˜ ìœ„ì¹˜ì™€ íšŒì „ì— ê±°ì˜ ë„ë‹¬í•˜ë©´ ì´ë™ ì¤‘ì§€ë¥¼ ìœ„í•´ í”Œë˜ê·¸ë¥¼ ë¦¬ì…‹
             if (Vector3.Distance(transform.position, originalPosition) < 0.01f && Quaternion.Angle(transform.rotation, originalRotation) < 1f)
             {
                 transform.position = originalPosition;
@@ -34,7 +34,7 @@ public class ObjectController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        // ¹°Ã¼°¡ ´Ù½Ã ³õ¿©Á³À» ¶§ ¿ø·¡ À§Ä¡¿Í È¸Àü°ªÀ¸·Î µ¹¾Æ°¡µµ·Ï ÇÃ·¡±× ¼³Á¤
+        // ë¬¼ì²´ê°€ ë‹¤ì‹œ ë†“ì—¬ì¡Œì„ ë•Œ ì›ë˜ ìœ„ì¹˜ì™€ íšŒì „ê°’ìœ¼ë¡œ ëŒì•„ê°€ë„ë¡ í”Œë˜ê·¸ ì„¤ì •
         if (!isHeld && !isReturning)
         {
             isReturning = true;
@@ -43,14 +43,14 @@ public class ObjectController : MonoBehaviour
 
     public void PickUp()
     {
-        // ¹°Ã¼¸¦ µé¾úÀ» ¶§ È£ÃâµÇ´Â ÇÔ¼ö
+        // ë¬¼ì²´ë¥¼ ë“¤ì—ˆì„ ë•Œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
         isHeld = true;
-        isReturning = false; // ¹°Ã¼¸¦ µé¸é ¹İÈ¯ ¸ğµå ÇØÁ¦
+        isReturning = false; // ë¬¼ì²´ë¥¼ ë“¤ë©´ ë°˜í™˜ ëª¨ë“œ í•´ì œ
     }
 
     public void Drop()
     {
-        // ¹°Ã¼¸¦ ³õ¾ÒÀ» ¶§ È£ÃâµÇ´Â ÇÔ¼ö
+        // ë¬¼ì²´ë¥¼ ë†“ì•˜ì„ ë•Œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
         isHeld = false;
     }
 }
