@@ -11,7 +11,7 @@ public class QuizBullet : MonoBehaviour, IHitable
     [SerializeField] private int dmg;
     [SerializeField] private float speed;
     [SerializeField] private GameObject destroyEffect;
-    [SerializeField] private GameObject hitEffect;
+    [SerializeField] private GameObject explosionEffect;
     [SerializeField] private float rotationSpeed;
 
     [SerializeField] private Vector3 scaleRate = new Vector3(0.1f, 0.1f, 0.1f);
@@ -57,13 +57,8 @@ public class QuizBullet : MonoBehaviour, IHitable
 
     private void OnTriggerEnter(Collider other) {
 
-        IHitable hitable = other.gameObject.GetComponent<IHitable>();
-        if (hitable != null) {
-            Instantiate(hitEffect, transform.position, Quaternion.identity);
-            hitable.Hit(dmg);
-            Destroy(gameObject);
-        }
-        else if (!other.CompareTag("AnswerBullet") && !other.CompareTag("PlayerBullet")) {
+        if (!other.CompareTag("AnswerBullet") && !other.CompareTag("PlayerBullet")) {
+            Instantiate(explosionEffect, new Vector3(transform.position.x, 0.25f, transform.position.z), Quaternion.identity);
             Destroy(gameObject);
         }
     }

@@ -29,7 +29,6 @@ public class GunWeapon : MonoBehaviour
 
     public void GetGun(SelectEnterEventArgs arg) {
         int val = arg.interactorObject.interactionLayers.value;
-
         questReporter.Report(0);
 
         if ((val & InteractionLayerMask.GetMask("LeftDirect")) == InteractionLayerMask.GetMask("LeftDirect"))

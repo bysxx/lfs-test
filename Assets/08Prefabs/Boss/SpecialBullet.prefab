@@ -397,6 +397,7 @@ GameObject:
   - component: {fileID: -3694219077570382750}
   - component: {fileID: -7493607799649137562}
   - component: {fileID: 26341951707642065}
+  - component: {fileID: 1874746586493520334}
   m_Layer: 12
   m_Name: SpecialBullet
   m_TagString: SpecialBullet
@@ -659,6 +660,19 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &1874746586493520334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6059194896579049077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f81967a71514419498250619a53aceae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRotation: {x: 0, y: 180, z: 0}
 --- !u!1 &8400888478089917686
 GameObject:
   m_ObjectHideFlags: 0

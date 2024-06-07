@@ -8,7 +8,7 @@ public class GunGetTutorial : TutorialBase {
     [Header("Gun Info")]
     [SerializeField] private GameObject gunSpawnEffect;
     [SerializeField] private GameObject gunPrefab;
-    [SerializeField] private Vector3 gunSpawnPos;
+    [SerializeField] private Transform gunSpawnPos;
 
     [Header("Tutorial Info")]
     [SerializeField] private DialogueGraph gunGetTutorialDialogue;
@@ -36,8 +36,8 @@ public class GunGetTutorial : TutorialBase {
     }
 
     private void GunSpawn() {
-        Instantiate(gunSpawnEffect, gunSpawnPos, Quaternion.identity);
-        Instantiate(gunPrefab, gunSpawnPos, Quaternion.identity);
+        Instantiate(gunSpawnEffect, gunSpawnPos.position, Quaternion.identity);
+        Instantiate(gunPrefab, gunSpawnPos.position, Quaternion.identity);
         newQuest = Access.QuestM.Register(gunGetQuest);
         Access.Player.MovePlayer();
     }

@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 8.91, z: -11.25}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4850768758315498117}
@@ -56,9 +56,9 @@ MonoBehaviour:
   dmg: 3
   speed: 50
   destroyEffect: {fileID: 725748389856807714, guid: 4bda94453d2ca7444a0fff05b2d425f5, type: 3}
-  hitEffect: {fileID: 4593184484909914552, guid: 2e1e9506f5904a64b81744324fb7cd50, type: 3}
+  explosionEffect: {fileID: 8995205741915163735, guid: 7916949fb681f544f959d779d0680c09, type: 3}
   rotationSpeed: 600
-  scaleRate: {x: 0.5, y: 0.5, z: 0.5}
+  scaleRate: {x: 0.4, y: 0.4, z: 0.4}
   duration: 2
   bossController: {fileID: 0}
 --- !u!135 &747342958755151724
