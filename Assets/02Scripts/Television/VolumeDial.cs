@@ -1,27 +1,21 @@
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
 
 public class VolumeDial : MonoBehaviour
 {
-    private XRGrabInteractable grabInteractable;
-    public TVController tvController;
-    private float previousAngle;
+    public float rotationSpeed = 5f; // 회전 속도
 
-    void Start()
+    void Update()
     {
-        grabInteractable = GetComponent<XRGrabInteractable>();
-        grabInteractable.onSelectEntered.AddListener(OnGrab);
-        grabInteractable.onSelectExited.AddListener(OnRelease);
-    }
+        // 조이스틱 입력을 가져옵니다 (상하 화살표 키 또는 컨트롤러 조이스틱)
+        float rotationInput = Input.GetAxis("Vertical");
 
-    void OnGrab(XRBaseInteractor interactor)
-    {
-        previousAngle = transform.localEulerAngles.z;
-    }
+        if (rotationInput != 0)
+        {
+            // 회전량을 계산합니다.
+            float rotationAmount = rotationInput * rotationSpeed * Time.deltaTime;
 
-    void OnRelease(XRBaseInteractor interactor)
-    {
-        float currentAngle = transform.localEulerAngles.z;
-        tvController.SetVolume(currentAngle);
+            // 다이얼을 로컬 z 축을 중심으로 회전시킵니다.
+            transform.Rotate(Vector3.forward, rotationAmount, Space.Self);
+        }
     }
 }

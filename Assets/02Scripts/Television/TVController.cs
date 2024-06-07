@@ -2,72 +2,27 @@ using UnityEngine;
 
 public class TVController : MonoBehaviour
 {
-    private bool isOn = false;
-    private int currentChannel = 1;
-    private float currentVolume = 0.5f;
+    private int currentChannel = 0;
+    private float volume = 0.5f; // 초기 볼륨 값 설정
 
-    public GameObject screen; 
-    public AudioSource audioSource; 
-    public Material offMaterial; 
-    public Material[] channelMaterials; 
-
-    private MeshRenderer screenRenderer;
-
-    void Start()
+    // TV의 채널을 설정하는 메서드
+    public void SetChannel(int channel)
     {
-        if (screen != null)
-        {
-            screenRenderer = screen.GetComponent<MeshRenderer>();
-        }
+        currentChannel = channel;
+        Debug.Log("현재 채널: " + currentChannel);
     }
 
-    public void SetPower(float rotationValue)
+    // TV의 전원 상태를 반환하는 메서드 (항상 켜져있음)
+    public bool IsOn()
     {
-        isOn = rotationValue > 180; 
-        UpdateTV();
+        return true;
     }
 
-    public void SetChannel(float rotationValue)
+    // TV의 볼륨을 설정하는 메서드
+    public void SetVolume(float newVolume)
     {
-        currentChannel = Mathf.FloorToInt(rotationValue / 60) + 1; 
-        UpdateTV();
-    }
-
-    public void SetVolume(float rotationValue)
-    {
-        currentVolume = rotationValue / 360; 
-        UpdateTV();
-    }
-
-    private void UpdateTV()
-    {
-        if (isOn)
-        {
-            Debug.Log("TV On - Channel: " + currentChannel + " Volume: " + currentVolume);
-            if (screenRenderer != null && currentChannel > 0 && currentChannel <= channelMaterials.Length)
-            {
-                screenRenderer.material = channelMaterials[currentChannel - 1];
-            }
-            if (audioSource != null)
-            {
-                audioSource.volume = currentVolume;
-                if (!audioSource.isPlaying)
-                {
-                    audioSource.Play();
-                }
-            }
-        }
-        else
-        {
-            Debug.Log("TV Off");
-            if (screenRenderer != null)
-            {
-                screenRenderer.material = offMaterial; 
-            }
-            if (audioSource != null && audioSource.isPlaying)
-            {
-                audioSource.Stop();
-            }
-        }
+        // 볼륨은 0에서 1 사이의 값으로 제한합니다.
+        volume = Mathf.Clamp01(newVolume);
+        Debug.Log("현재 볼륨: " + volume);
     }
 }
