@@ -1,5 +1,7 @@
+using Dialogue;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
 public class BossStageManager : NormalSingleton<BossStageManager>
@@ -8,7 +10,7 @@ public class BossStageManager : NormalSingleton<BossStageManager>
     public static event OnDestroyAllBulletHandler OnDestroyAllBullet;
 
     [Header("Game Info")]
-    [SerializeField] private Quest mainQuest; 
+    [SerializeField] private Transform playerSpawnPos;
 
     [Header("Tutorial")]
     [SerializeField] private TutorialManager tutorialManager;
@@ -18,6 +20,11 @@ public class BossStageManager : NormalSingleton<BossStageManager>
     [SerializeField] private GameObject bossSpawnEffect;
     [SerializeField] private BossController bossPrefab;
     [SerializeField] private Vector3 bossSpawnPos;
+
+    [Header("Gun Info")]
+    [SerializeField] private GameObject gunSpawnEffect;
+    [SerializeField] private GameObject gunPrefab;
+    [SerializeField] private Transform gunSpawnPos;
 
     [Header("Special Bullet Info")]
     [SerializeField] private GameObject bulletSpawnEffect;
@@ -32,17 +39,24 @@ public class BossStageManager : NormalSingleton<BossStageManager>
         PatternTimer = new DynamicVariable<float>();
     }
 
-    private void Start() {
-
-        Access.QuestM.Register(mainQuest);
+    private IEnumerator Start() {
 
         AnswerBullet.OnDestroyBullet += OnDestroyAnswerBullet;
-        tutorialManager.SetNextTutorial();
 
+        yield return null;
+
+        if (!GameManager.Instance.isTutorialCleared) tutorialManager.SetNextTutorial();
+        else StartCoroutine(BossStageStart_CO());
     }
 
     private void OnDestroy() {
         AnswerBullet.OnDestroyBullet -= OnDestroyAnswerBullet;
+    }
+
+    public GunWeapon GunSpawn() {
+        Instantiate(gunSpawnEffect, gunSpawnPos.position, Quaternion.identity);
+        GunWeapon gun = Instantiate(gunPrefab, gunSpawnPos.position, Quaternion.identity).GetComponent<GunWeapon>();
+        return gun;
     }
 
     public BossController SpawnBoss() {
@@ -74,5 +88,30 @@ public class BossStageManager : NormalSingleton<BossStageManager>
 
     private void OnDestroyAnswerBullet(AnswerBullet bullet) {
         CurBulletCnt--;
+    }
+
+    public IEnumerator BossStageStart_CO() {
+        Access.UIM.FadeOut();
+
+        Access.Player.StopPlayer();
+
+        yield return new WaitForSeconds(3f);
+
+        if (bossController != null) Destroy(bossController.gameObject);
+        if (Access.Player.P_DInfo.CurGunWeapon != null) Destroy(Access.Player.P_DInfo.CurGunWeapon.gameObject);
+        Access.Player.transform.position = playerSpawnPos.position;
+        Access.Player.transform.rotation = playerSpawnPos.rotation;
+
+        Access.UIM.FadeIn();
+
+        yield return new WaitForSeconds(3f);
+
+        Access.Player.MovePlayer();
+        GunSpawn().CanShot = true;
+
+        yield return new WaitForSeconds(2f);
+
+        Access.BossStageM.SpawnBoss();
+
     }
 }

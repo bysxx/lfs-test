@@ -1,15 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
     public List<TutorialBase> tutorials;
     private TutorialBase curTutorial;
     private int curIdx = -1;
-
-    public static bool isTutorialCleared;
 
     private void Update() {
         if (curTutorial != null)
@@ -22,7 +19,6 @@ public class TutorialManager : MonoBehaviour
 
         if (curIdx >= tutorials.Count - 1) {
             CompletedAllTutorials();
-            isTutorialCleared = true;
             return;
         }
 
@@ -34,7 +30,7 @@ public class TutorialManager : MonoBehaviour
 
     public void CompletedAllTutorials() {
         curTutorial = null;
-
+        Access.GameM.isTutorialCleared = true;
         Define.Log("Complete All");
         
     }

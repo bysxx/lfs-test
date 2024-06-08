@@ -31,4 +31,9 @@ public static class Access {
     /// BossStageManager
     /// </summary>
     public static BossStageManager BossStageM { get { return BossStageManager.Instance; } }
+
+    /// <summary>
+    /// GameManager
+    /// </summary>
+    public static GameManager GameM { get { return GameManager.Instance; } }
 }

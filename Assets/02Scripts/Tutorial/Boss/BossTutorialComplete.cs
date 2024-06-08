@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BossTutorialComplete : TutorialBase
 {
-
+    [SerializeField] private Quest mainQuest;
     [SerializeField] DialogueGraph endDialogue;
 
     protected override bool IsCompleted => dialogueCompleted;
@@ -15,7 +15,6 @@ public class BossTutorialComplete : TutorialBase
         if (IsCompleted) {
             Define.Log("¿Ï·á");
             tutorialManager.SetNextTutorial();
-            Access.BossStageM.bossController.Fsm.Transition(Access.BossStageM.bossController.IdleState);
         }
     }
 
@@ -30,6 +29,12 @@ public class BossTutorialComplete : TutorialBase
 
     private void BossGameStartEvent() {
         dialogueCompleted = true;
+        StartCoroutine(TutorialEnd_CO());
+    }
+
+    private IEnumerator TutorialEnd_CO() {
+        yield return StartCoroutine(Access.BossStageM.BossStageStart_CO());
+        Access.QuestM.Register(mainQuest);
     }
 
 }

@@ -7,6 +7,9 @@ public class PlayerHPComponent : MonoBehaviour, IHitable {
     [SerializeField] private int hp;
 
     public void Hit(int dmg) {
+
+        if (!GameManager.Instance.isTutorialCleared) return;
+
         hp -= dmg;
         if (hp <= 0) {
             hp = 0;
@@ -16,6 +19,6 @@ public class PlayerHPComponent : MonoBehaviour, IHitable {
 
     public void Dead() {
         Access.Player.StopPlayer();
-        Access.UIM.FadeInOut("Review");
+        Access.UIM.FadeToScene("Review");
     }
 }

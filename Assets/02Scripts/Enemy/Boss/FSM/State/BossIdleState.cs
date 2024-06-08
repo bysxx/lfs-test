@@ -14,7 +14,7 @@ public class BossIdleState : State {
     public override void Enter(Controller controller) {
         bossController = controller as BossController;
 
-        if (!TutorialManager.isTutorialCleared) return;
+        if (!Access.GameM.isTutorialCleared) return;
         if (bossController.Hp.Accessor <= 0) return;
 
         StartCoroutine(SetPattern(i));

@@ -200,12 +200,13 @@ MonoBehaviour:
   - {fileID: -2142861586278387507}
   - {fileID: 8416676949097195137}
   - {fileID: 7366240816460424093}
-  currentNode: {fileID: -2142861586278387507}
+  currentNode: {fileID: 7366240816460424093}
   isSkipable: 0
   isCancelable: 0
   isReTalkable: 0
   acceptionConditions: []
   dialogueName: 
+  isAuto: 0
 --- !u!114 &7271542545005027301
 MonoBehaviour:
   m_ObjectHideFlags: 0

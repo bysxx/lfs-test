@@ -1,3 +1,4 @@
+using Dialogue;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,9 @@ public class BossController : Controller, IHitable {
     [SerializeField] private GameObject deadEffect;
     public DynamicVariable<int> Hp;
     [field : SerializeField] public Animator BossAnimator { get; private set; }
+    [SerializeField] private DialogueGraph bossStartDialogue;
+    [SerializeField] private DialogueGraph bossDeadDialogue;
+    [SerializeField] private DialogueGraph[] bossRandomDialgues;
 
     public BossFSM Fsm { get; private set; }
     public State IdleState { get; private set; }
@@ -26,6 +30,8 @@ public class BossController : Controller, IHitable {
 
         Fsm = new BossFSM(this);
         Fsm.Transition(IdleState);
+
+        if (GameManager.Instance.isTutorialCleared) Access.DIalogueM.RegisterDialogue(bossStartDialogue);
     }
 
     private void OnDestroy() {
@@ -37,6 +43,7 @@ public class BossController : Controller, IHitable {
     }
 
     public void Dead() {
+        Access.DIalogueM.RegisterDialogue(bossDeadDialogue);
         BossAnimator.SetTrigger("Die");
         GetComponent<QuestReporter>().Report(2);
         Invoke(nameof(DeadEffect), 3.2f);
@@ -56,6 +63,9 @@ public class BossController : Controller, IHitable {
     }
 
     public void SetPattern(int i) {
+
+        if (GameManager.Instance.isTutorialCleared) Access.DIalogueM.RegisterDialogue(bossRandomDialgues[Random.Range(0, bossRandomDialgues.Length - 1)]);
+
         switch (i) {
             case 0:
                 Fsm.Transition(SpawnState);

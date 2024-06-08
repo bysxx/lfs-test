@@ -17,7 +17,6 @@ public class BossPattern2Tutorial : TutorialBase {
     public override void Activate(TutorialManager tutorialManager) {
         if (IsCompleted) {
             Define.Log("¿Ï·á");
-            //Access.BossStageM.DestroyAllBullet();
             tutorialManager.SetNextTutorial();
         }
     }
@@ -28,7 +27,7 @@ public class BossPattern2Tutorial : TutorialBase {
     }
 
     public override void Exit() {
-        
+        bossPattern2TutorialTalk.RemoveEventAtEventNode("BossPattern2Event", BossPattern2Event);
     }
 
     private void BossPattern2Event() {

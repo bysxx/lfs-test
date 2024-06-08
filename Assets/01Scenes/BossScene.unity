@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 03aaebc2ca734b242a11f5738041d245, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -172,11 +172,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15cac475f14ce48428f62fef85af239d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainQuest: {fileID: 11400000, guid: 6ba49b5e1582302449915c14b2d2d545, type: 2}
+  playerSpawnPos: {fileID: 2090994810}
   tutorialManager: {fileID: 471464347}
   bossSpawnEffect: {fileID: 100006, guid: 60bc526f4be1e044ab9e46340b82ffb3, type: 3}
   bossPrefab: {fileID: 7121067821055163018, guid: 6db2be44988d04f4fbc8a778ccbd1a57, type: 3}
   bossSpawnPos: {x: 0, y: 0.2, z: -30.2}
+  gunSpawnEffect: {fileID: 5824670795371433373, guid: f6fd568b816c64943a44efc3add3a881, type: 3}
+  gunPrefab: {fileID: 3133199567049331465, guid: 57ec58c1774229d40ba03ccc43856534, type: 3}
+  gunSpawnPos: {fileID: 787800266}
   bulletSpawnEffect: {fileID: 1652143759095011289, guid: e2c1ac940434a5242b54d72b66654687, type: 3}
   specialBulletPrefab: {fileID: 6059194896579049077, guid: fe0b6086f6f8c524389d493cf09c1771, type: 3}
   spawnTransforms:
@@ -1875,6 +1878,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 847957707}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1240190308 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+  m_PrefabInstance: {fileID: 1832549360}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1263000206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1968,6 +1976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad9cfd024c94864f88f5486db4c73aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainQuest: {fileID: 11400000, guid: 6ba49b5e1582302449915c14b2d2d545, type: 2}
   endDialogue: {fileID: 11400000, guid: df4ee57044b8a8f4fbac34dd704efe93, type: 2}
 --- !u!1 &1433519141
 GameObject:
@@ -2060,6 +2069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43d73a39811ba54f95bb32af7b3634f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTutorialCleared: 0
 --- !u!1001 &1473215003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2448,9 +2458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f5b718154f982448f5c98443efebb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunSpawnEffect: {fileID: 5824670795371433373, guid: f6fd568b816c64943a44efc3add3a881, type: 3}
-  gunPrefab: {fileID: 3133199567049331465, guid: 57ec58c1774229d40ba03ccc43856534, type: 3}
-  gunSpawnPos: {fileID: 787800266}
   gunGetTutorialDialogue: {fileID: 11400000, guid: 3ae0eecb37c59ec4182475844a3f2cd4, type: 2}
   gunGetQuest: {fileID: 11400000, guid: 32ef18fe28d168a40a93ad1656d27a49, type: 2}
 --- !u!1001 &1619525648
@@ -2597,6 +2604,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
+--- !u!114 &1691796448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691796434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f518d84db31d4654381aa29982d9c59f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <P_DInfo>k__BackingField: {fileID: 0}
+  <P_SInfo>k__BackingField: {fileID: 0}
+  <moveProvider>k__BackingField: {fileID: 948670191}
 --- !u!1001 &1832549360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2727,7 +2749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7696548424635294051, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.21
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 7696548424635294051, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2769,14 +2791,21 @@ PrefabInstance:
       propertyPath: m_GravityApplicationMode
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3687227346276060695, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7690080512698956844, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 2090994810}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7696548424635294048, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1691796441}
+    - targetCorrespondingSourceObject: {fileID: 7696548424635294048, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1691796448}
     - targetCorrespondingSourceObject: {fileID: 9067829889149138881, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 948670192}
@@ -3104,6 +3133,37 @@ Transform:
   - {fileID: 847957707}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2090994808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2090994810}
+  m_Layer: 0
+  m_Name: PlayerSpawnPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2090994810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090994808}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1240190308}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &1225818942053845640
 PrefabInstance:
   m_ObjectHideFlags: 0

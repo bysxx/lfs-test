@@ -54,7 +54,7 @@ public class BossQuizState : State {
                 OnQuizClosed?.Invoke();
                 Access.BossStageM.PatternTimer.Accessor = 0;
                 Shot();
-                if (!TutorialManager.isTutorialCleared) bossController.Fsm.Transition(bossController.QuizState);
+                if (!Access.GameM.isTutorialCleared) bossController.Fsm.Transition(bossController.QuizState);
                 else bossController.Fsm.Transition(bossController.IdleState);
             }
 
@@ -128,7 +128,7 @@ public class BossQuizState : State {
 
     private void OnCorrectBulletTrigger(AnswerBullet bullet) {
         correctBulletTriggered = true;
-        if (!TutorialManager.isTutorialCleared) GetComponent<QuestReporter>().Report(1);
+        if (!Access.GameM.isTutorialCleared) GetComponent<QuestReporter>().Report(1);
     }
 
     private void OnInCorrectBulletTrigger(AnswerBullet bullet) {

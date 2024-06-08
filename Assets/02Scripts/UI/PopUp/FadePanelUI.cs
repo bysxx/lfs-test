@@ -5,7 +5,6 @@ using UnityEngine;
 public class FadePanelUI : SceneUI
 {
 
-    private bool isBlack = true;
     private Animator animator;
 
     protected override void Init() {
@@ -20,25 +19,23 @@ public class FadePanelUI : SceneUI
 
     private void Start() {
         Init();
-        FadeInOut();
+        FadeIn();
     }
 
     // black -> white
-    private void FadeIn() {
-        isBlack = false;
+    public void FadeIn() {
         animator.SetTrigger("FadeIn");
     }
 
     // white -> black
-    private void FadeOut(string sceneName) {
-        isBlack = true;
-        animator.GetBehaviour<GoToSelectedScene>().sceneName = sceneName;
-        animator.SetTrigger("FadeOut");
+    public void FadeOut() {
+        animator.SetTrigger("FadeToScene");
     }
 
-    public void FadeInOut(string sceneName=null) {
-        if (isBlack) FadeIn();
-        else FadeOut(sceneName);
+    // white -> black
+    public void FadeToScene(string sceneName) {
+        animator.GetBehaviour<GoToSelectedScene>().sceneName = sceneName;
+        animator.SetTrigger("FadeToScene");
     }
 
 }

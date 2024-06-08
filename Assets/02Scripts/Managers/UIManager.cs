@@ -1,5 +1,5 @@
+using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIManager : NormalSingleton<UIManager> {
@@ -137,7 +137,15 @@ public class UIManager : NormalSingleton<UIManager> {
         return curUIObjs[name];
     }
 
-    public void FadeInOut(string sceneName=null) {
-        fadePanel.FadeInOut(sceneName);
+    public void FadeToScene(string sceneName=null) {
+        fadePanel.FadeToScene(sceneName);
+    }
+
+    public void FadeIn() {
+        fadePanel.FadeIn();
+    }
+
+    public void FadeOut() {
+        fadePanel.FadeOut();
     }
 }

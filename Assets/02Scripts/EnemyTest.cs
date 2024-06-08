@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyTest : MonoBehaviour
 {
@@ -8,11 +9,7 @@ public class EnemyTest : MonoBehaviour
     [SerializeField] private Transform spawnPos;
 
     private void Start() {
-        Instantiate(enemyPrefab, spawnPos.position, Quaternion.identity);
+        SceneManager.LoadScene("BossScene");
     }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.B))
-            Instantiate(enemyPrefab, spawnPos.position, Quaternion.identity);
-    }
 }

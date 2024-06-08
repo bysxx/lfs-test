@@ -1034,6 +1034,12 @@ MonoBehaviour:
   Hp:
     _variable: 5
   <BossAnimator>k__BackingField: {fileID: 1308343225785176218}
+  bossStartDialogue: {fileID: 11400000, guid: e6c2bb26bca43e24ca8927cc406c113b, type: 2}
+  bossDeadDialogue: {fileID: 11400000, guid: 2a01e64be68d83641b62a32cd0dcaa50, type: 2}
+  bossRandomDialgues:
+  - {fileID: 11400000, guid: 2c0456b794d903344bb2ee09d07ca60e, type: 2}
+  - {fileID: 11400000, guid: da75b0950323fb44ea47ab3387fb33a7, type: 2}
+  - {fileID: 11400000, guid: b0874bd11292ef94287e2936ccc15cb8, type: 2}
 --- !u!114 &7675303495003689993
 MonoBehaviour:
   m_ObjectHideFlags: 0

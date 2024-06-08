@@ -29,7 +29,7 @@ public class BossSpawnState : State {
                 Access.BossStageM.PatternTimer.Accessor = 0;
                 KillAllEnemy();
                 bossController.Fsm.Transition(bossController.IdleState);
-                if (!TutorialManager.isTutorialCleared) GetComponent<QuestReporter>().Report(0);
+                if (!Access.GameM.isTutorialCleared) GetComponent<QuestReporter>().Report(0);
             }
 
             curSpawnTime += Time.deltaTime;

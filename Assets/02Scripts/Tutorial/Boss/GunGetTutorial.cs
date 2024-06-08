@@ -5,11 +5,6 @@ using UnityEngine;
 
 public class GunGetTutorial : TutorialBase {
 
-    [Header("Gun Info")]
-    [SerializeField] private GameObject gunSpawnEffect;
-    [SerializeField] private GameObject gunPrefab;
-    [SerializeField] private Transform gunSpawnPos;
-
     [Header("Tutorial Info")]
     [SerializeField] private DialogueGraph gunGetTutorialDialogue;
     [SerializeField] private Quest gunGetQuest;
@@ -29,6 +24,7 @@ public class GunGetTutorial : TutorialBase {
         Access.Player.StopPlayer();
         gunGetTutorialDialogue.BindEventAtEventNode("GunSpawnEvent", GunSpawn);
         Access.DIalogueM.RegisterDialogue(gunGetTutorialDialogue);
+        
     }
 
     public override void Exit() {
@@ -36,8 +32,7 @@ public class GunGetTutorial : TutorialBase {
     }
 
     private void GunSpawn() {
-        Instantiate(gunSpawnEffect, gunSpawnPos.position, Quaternion.identity);
-        Instantiate(gunPrefab, gunSpawnPos.position, Quaternion.identity);
+        Access.BossStageM.GunSpawn();
         newQuest = Access.QuestM.Register(gunGetQuest);
         Access.Player.MovePlayer();
     }

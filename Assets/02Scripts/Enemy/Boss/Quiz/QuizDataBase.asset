@@ -38,6 +38,9 @@ MonoBehaviour:
       isCorrect: 0
     - answerString: "\uC2A4\uC6E8\uB374"
       isCorrect: 0
+    quizExplain: "\uC6B0\uB9AC\uB098\uB77C\uB294 \"\uB300\uD55C \uBBFC\uAD6D\" \uC774\uB77C\uB294
+      \uC774\uB984\uC774 \uC788\uC5B4!"
+    quizImg: {fileID: 21300000, guid: f88cc66088c6e4042ae13a50dfbb3662, type: 3}
   - isCleared: 0
     quizID: QUIZ02
     quizDescription: "\uD55C\uC591\uB300\uD559\uAD50\uC5D0\uC11C \uC720\uBA85\uD55C
@@ -63,6 +66,10 @@ MonoBehaviour:
       isCorrect: 0
     - answerString: "\uC5D0\uB9AC\uCE74"
       isCorrect: 0
+    quizExplain: "\uD55C\uC591\uB300\uD559\uAD50 ERICA \uCEA0\uD37C\uC2A4\uC5D0\uB294
+      \uD558\uB0E5\uC774\uC640 \uD558\uC774\uBE44\uBE44\uB77C\uB294 \uB9C8\uC2A4\uCF54\uD2B8\uAC00
+      \uC874\uC7AC\uD574!"
+    quizImg: {fileID: 21300000, guid: d839aa1982367874bac74affe829c2e4, type: 3}
   - isCleared: 0
     quizID: QUIZ03
     quizDescription: "\uC6B0\uB9AC\uAC00 \uC9C0\uAE08 \uB4E3\uB294 \uC218\uC5C5\uC758
@@ -88,6 +95,10 @@ MonoBehaviour:
       isCorrect: 0
     - answerString: "\uB370\uC774\uD130\uBCA0\uC774\uC2A4"
       isCorrect: 0
+    quizExplain: "\uAC00\uC0C1 \uC99D\uAC15 \uD604\uC2E4 \uD504\uB85C\uADF8\uB798\uBC0D\uC774\uB77C\uB294
+      \uC218\uC5C5\uC740 VR\uC744 \uC774\uC6A9\uD574\uC11C \uCEE8\uD150\uCE20\uB97C
+      \uB9CC\uB4E4\uC5B4\uB0B4\uB294 \uC218\uC5C5\uC774\uC57C!"
+    quizImg: {fileID: 21300000, guid: 4e5b816343df5574c8a051077a2156b9, type: 3}
   - isCleared: 0
     quizID: QUIZ04
     quizDescription: "\uC774 \uAC8C\uC784\uC744 \uB9CC\uB4E0 \uC5D4\uC9C4\uC758 \uC774\uB984\uC740?"
@@ -112,6 +123,11 @@ MonoBehaviour:
       isCorrect: 0
     - answerString: "RPG \uBA54\uC774\uCEE4"
       isCorrect: 0
+    quizExplain: "\uC774 \uAC8C\uC784\uC740 \uC720\uB2C8\uD2F0 \uC5D4\uC9C4\uC73C\uB85C
+      \uB9CC\uB4E4\uC5B4\uC84C\uC5B4! \uAC8C\uC784 \uC5D4\uC9C4\uC774\uB780, \uAC8C\uC784\uC744
+      \uB354\uC6B1 \uC27D\uAC8C \uB9CC\uB4E4\uAE30 \uC704\uD574 \uB9CC\uB4E4\uC5B4\uC9C4
+      \uD504\uB808\uC784 \uC6CC\uD06C\uB97C \uB9D0\uD574"
+    quizImg: {fileID: 21300000, guid: 3260f72e5b6eec24587b9132cb1ae0a0, type: 3}
   - isCleared: 0
     quizID: QUIZ04
     quizDescription: "\uB2E4\uC74C\uC911 \uAC8C\uC784 \uD68C\uC0AC\uAC00 \uC544\uB2CC
@@ -137,3 +153,7 @@ MonoBehaviour:
       isCorrect: 0
     - answerString: "\uB2CC\uD150\uB3C4"
       isCorrect: 0
+    quizExplain: "\uC0BC\uC131 \uC804\uC790\uB294 \uB2E4\uB4E4 \uC54C\uACE0 \uC788\uC9C0?
+      \uC0BC\uC131 \uC804\uC790\uB294 \uAD6D\uB0B4\uC5D0\uC11C \uAC00\uC7A5 \uC720\uBA85\uD55C
+      \uC804\uC790 \uBC18\uB3C4\uCCB4 \uD68C\uC0AC\uC57C!"
+    quizImg: {fileID: 21300000, guid: 3cadcd247345c2649b0e8fbd9ee6e8db, type: 3}

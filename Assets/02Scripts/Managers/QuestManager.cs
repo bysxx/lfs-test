@@ -44,6 +44,9 @@ public class QuestManager : DontDestroySingleton<QuestManager>
     /// <returns></returns>
     public Quest Register(Quest quest)
     {
+
+        if (completedQuests.Contains(quest) && !quest.IsDuplicatable) return null;
+
         // Use a copy of the original quest scriptable object for runtime operations.
         var newQuest = quest.Clone();
 

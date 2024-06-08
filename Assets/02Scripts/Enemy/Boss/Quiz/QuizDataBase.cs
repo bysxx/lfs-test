@@ -13,6 +13,9 @@ public class Quiz {
     public string quizID;
     public string quizDescription;
     public List<Answer> answerList;
+
+    public string quizExplain;
+    public Sprite quizImg;
 }
 
 [System.Serializable]
