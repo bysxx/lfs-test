@@ -34,10 +34,15 @@ public class TVController : MonoBehaviour
                 Debug.LogError("스크린 렌더러 또는 채널 메테리얼이 올바르게 설정되지 않았습니다.");
             }
         }
-        
+
+        if (currentChannel == 5)
+            GetComponentInChildren<QuestReporter>().Report();
+
 
         Debug.Log("현재 채널: " + currentChannel);
     }
+
+    
 
     // TV의 전원 상태를 반환하는 메서드 (항상 켜져있음)
     public bool IsOn()
