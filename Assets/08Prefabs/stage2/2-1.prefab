@@ -260,13 +260,13 @@ GameObject:
   - component: {fileID: 308292997742186868}
   - component: {fileID: 8032692788423658941}
   - component: {fileID: 2017414059290114286}
-  - component: {fileID: 6689843078730443836}
-  - component: {fileID: 4175182380244992620}
-  - component: {fileID: 4267471268491330918}
-  - component: {fileID: 5262755322347254720}
+  - component: {fileID: 3162224882781076659}
+  - component: {fileID: 6742165116022300407}
+  - component: {fileID: 8188208339304020162}
+  - component: {fileID: 5701336416506180732}
   m_Layer: 0
   m_Name: "\uC218\uD654\uAE30"
-  m_TagString: Untagged
+  m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -336,7 +336,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &6689843078730443836
+--- !u!54 &3162224882781076659
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -362,8 +362,8 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
---- !u!114 &4175182380244992620
+  m_CollisionDetection: 0
+--- !u!114 &6742165116022300407
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -413,10 +413,34 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8188208339304020162}
+        m_TargetAssemblyTypeName: PhoneReceiver, Assembly-CSharp
+        m_MethodName: OnGrab
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8188208339304020162}
+        m_TargetAssemblyTypeName: PhoneReceiver, Assembly-CSharp
+        m_MethodName: OnRelease
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_FirstFocusEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -490,7 +514,7 @@ MonoBehaviour:
   m_SmoothScale: 0
   m_SmoothScaleAmount: 8
   m_TightenScale: 0.1
-  m_ThrowOnDetach: 0
+  m_ThrowOnDetach: 1
   m_ThrowSmoothingDuration: 0.25
   m_ThrowSmoothingCurve:
     serializedVersion: 2
@@ -515,7 +539,19 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!64 &4267471268491330918
+--- !u!114 &8188208339304020162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408752665372626180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8784fe007b560f4b8216a5ac83ae9ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &5701336416506180732
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -537,19 +573,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1426954585097939299, guid: 15636770ab36e7c4db2045f4a8b75d91, type: 3}
---- !u!114 &5262755322347254720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408752665372626180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50b6824adeb138141a7ff33a1fa7924b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  returnSpeed: 2
 --- !u!1 &1675225631310520455
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,7 +901,7 @@ GameObject:
   - component: {fileID: 8092298290128057706}
   - component: {fileID: 2796205121325829843}
   - component: {fileID: 3672345867383855571}
-  - component: {fileID: 2826201390471687160}
+  - component: {fileID: 5890089817845739138}
   m_Layer: 0
   m_Name: "\uBAB8\uD1B5"
   m_TagString: Untagged
@@ -951,7 +974,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2826201390471687160
+--- !u!64 &5890089817845739138
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

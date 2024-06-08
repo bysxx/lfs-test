@@ -21,10 +21,13 @@ public class DialController : MonoBehaviour
     void Start()
     {
         initialRotation = transform.rotation;
+        enabled = false; // 초기에는 비활성화 상태로 시작합니다.
     }
 
     void Update()
     {
+        if (!enabled) return; // 활성화되지 않았으면 아무 작업도 하지 않습니다.
+
         float rotationInput = Input.GetAxis("Horizontal");
 
         if (rotationInput != 0)
