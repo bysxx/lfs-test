@@ -13,9 +13,17 @@ public class TVController : MonoBehaviour
     {
         currentChannel = channel;
 
+        foreach (GameObject screen in screens)
+        {
+            screen.SetActive(false);
+        }
+
         // 현재 채널에 해당하는 화면 오브젝트가 있을 경우 메테리얼을 할당
         if (currentChannel >= 0 && currentChannel < screens.Length)
         {
+            GameObject currentScreen = screens[currentChannel];
+            currentScreen.SetActive(true);
+
             Renderer screenRenderer = screens[currentChannel].GetComponent<Renderer>();
             if (screenRenderer != null && currentChannel < channelMaterials.Length && channelMaterials[currentChannel] != null)
             {
@@ -26,10 +34,7 @@ public class TVController : MonoBehaviour
                 Debug.LogError("스크린 렌더러 또는 채널 메테리얼이 올바르게 설정되지 않았습니다.");
             }
         }
-        else
-        {
-            Debug.LogError("유효하지 않은 채널 번호입니다.");
-        }
+        
 
         Debug.Log("현재 채널: " + currentChannel);
     }

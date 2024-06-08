@@ -8,6 +8,7 @@ public class ChannelDialController : MonoBehaviour
     public float minRotation = 0f; // 최소 회전 각도
     public float maxRotation = 360f; // 최대 회전 각도
     private int[] angleToChannelMapping; // 각도와 채널 매핑
+    private int previousChannel = -1; // 이전 채널을 저장하는 변수
 
     private void Start()
     {
@@ -17,56 +18,64 @@ public class ChannelDialController : MonoBehaviour
 
     private void Update()
     {
-        // 조이스틱 입력을 가져옵니다 (좌우 화살표 키 또는 컨트롤러 조이스틱)
-        float rotationInput = Input.GetAxis("Horizontal");
-
-        if (rotationInput != 0)
+        // 숫자 키패드 입력을 가져옵니다
+        if (Input.GetKey(KeyCode.Keypad1))
         {
-            // 회전량을 계산합니다.
-            float rotationAmount = Mathf.Sign(rotationInput) * rotationSpeed * Time.deltaTime;
+            RotateDial(-1); // 왼쪽으로 회전
+        }
+        else if (Input.GetKey(KeyCode.Keypad2))
+        {
+            RotateDial(1); // 오른쪽으로 회전
+        }
+    }
 
-            // 현재 회전값을 가져옵니다.
-            float currentZRotation = transform.rotation.eulerAngles.z;
-            float newZRotation = currentZRotation + rotationAmount;
+    private void RotateDial(int direction)
+    {
+        // 회전량을 계산합니다.
+        float rotationAmount = direction * rotationSpeed * Time.deltaTime;
 
-            // 회전 범위를 0도에서 360도로 맞춥니다.
-            if (newZRotation < 0f)
-            {
-                newZRotation += 360f;
-            }
-            else if (newZRotation >= 360f)
-            {
-                newZRotation -= 360f;
-            }
+        // 현재 회전값을 가져옵니다.
+        float currentZRotation = transform.rotation.eulerAngles.z;
+        float newZRotation = currentZRotation + rotationAmount;
 
-            // 회전 범위를 제한합니다.
-            if (newZRotation >= minRotation && newZRotation <= maxRotation)
-            {
-                transform.Rotate(Vector3.forward, rotationAmount, Space.Self);
-                UpdateChannel(); // 채널 업데이트
-            }
+        // 회전 범위를 0도에서 360도로 맞춥니다.
+        if (newZRotation < 0f)
+        {
+            newZRotation += 360f;
+        }
+        else if (newZRotation >= 360f)
+        {
+            newZRotation -= 360f;
         }
 
-        // 디버그 로그가 활성화된 경우 현재 회전 각도를 기록합니다.
-
+        // 회전 범위를 제한합니다.
+        if (newZRotation >= minRotation && newZRotation <= maxRotation)
+        {
+            transform.Rotate(Vector3.forward, rotationAmount, Space.Self);
+            UpdateChannel(); // 채널 업데이트
+        }
     }
 
     void UpdateChannel()
     {
         float currentAngle = transform.rotation.eulerAngles.z;
         int channel = GetChannelFromAngle(currentAngle); // 각도에서 채널을 계산
-        tvController.SetChannel(channel); // TVController에 채널 설정
-
-        if (enableDebugLogs)
+        if (channel != previousChannel)
         {
-            Debug.Log("현재 채널: " + channel); // 디버그 로그 출력
+            tvController.SetChannel(channel); // TVController에 채널 설정
+            previousChannel = channel; // 이전 채널을 현재 채널로 업데이트
+
+            if (enableDebugLogs)
+            {
+                Debug.Log("현재 채널: " + channel); // 디버그 로그 출력
+            }
         }
     }
 
     int GetChannelFromAngle(float angle)
     {
         // 0 ~ 360 각도 범위를 0 ~ 6 채널 범위로 매핑합니다.
-        int index = Mathf.RoundToInt(angle / 60f) % 6;
+        int index = Mathf.RoundToInt(angle / 51f) % 7;
         return angleToChannelMapping[index];
     }
 }
