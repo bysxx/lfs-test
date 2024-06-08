@@ -7,6 +7,13 @@ public class ChannelDialController : MonoBehaviour
     public bool enableDebugLogs = false; // 디버그 로그를 사용할지 여부를 결정하는 플래그
     public float minRotation = 0f; // 최소 회전 각도
     public float maxRotation = 360f; // 최대 회전 각도
+    private int[] angleToChannelMapping; // 각도와 채널 매핑
+
+    private void Start()
+    {
+        // 각도와 채널을 수작업으로 매핑합니다.
+        angleToChannelMapping = new int[] { 3, 4, 5, 6, 0, 1, 2 };
+    }
 
     private void Update()
     {
@@ -41,21 +48,25 @@ public class ChannelDialController : MonoBehaviour
         }
 
         // 디버그 로그가 활성화된 경우 현재 회전 각도를 기록합니다.
-        if (enableDebugLogs)
-        {
-            Vector3 rotationAngles = transform.rotation.eulerAngles;
-            Debug.Log($"회전 - X: {rotationAngles.x}, Y: {rotationAngles.y}, Z: {rotationAngles.z}");
-        }
+
     }
 
     void UpdateChannel()
     {
         float currentAngle = transform.rotation.eulerAngles.z;
-        int channel = Mathf.RoundToInt(currentAngle / 60f); // 60도 단위로 채널 계산
+        int channel = GetChannelFromAngle(currentAngle); // 각도에서 채널을 계산
         tvController.SetChannel(channel); // TVController에 채널 설정
+
         if (enableDebugLogs)
         {
             Debug.Log("현재 채널: " + channel); // 디버그 로그 출력
         }
+    }
+
+    int GetChannelFromAngle(float angle)
+    {
+        // 0 ~ 360 각도 범위를 0 ~ 6 채널 범위로 매핑합니다.
+        int index = Mathf.RoundToInt(angle / 60f) % 6;
+        return angleToChannelMapping[index];
     }
 }

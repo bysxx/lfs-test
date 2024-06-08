@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54087b548d601844a9331bca33176a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tvController: {fileID: 0}
+  tvController: {fileID: 1584035144773871154}
   rotationSpeed: 100
   enableDebugLogs: 1
   minRotation: 0
