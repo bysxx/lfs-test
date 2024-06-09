@@ -2,43 +2,42 @@ using UnityEngine;
 
 public class ChannelDialController : MonoBehaviour
 {
-    public TVController tvController; // TVController ÂüÁ¶
-    public float rotationSpeed = 60f; // ÃÊ´ç È¸Àü ¼Óµµ (µµ ´ÜÀ§)
-    public bool enableDebugLogs = false; // µğ¹ö±× ·Î±×¸¦ »ç¿ëÇÒÁö ¿©ºÎ¸¦ °áÁ¤ÇÏ´Â ÇÃ·¡±×
-    public float minRotation = 0f; // ÃÖ¼Ò È¸Àü °¢µµ
-    public float maxRotation = 360f; // ÃÖ´ë È¸Àü °¢µµ
-    private int[] angleToChannelMapping; // °¢µµ¿Í Ã¤³Î ¸ÅÇÎ
-    private int previousChannel = -1; // ÀÌÀü Ã¤³ÎÀ» ÀúÀåÇÏ´Â º¯¼ö
+    public TVController tvController; // TVController ì°¸ì¡°
+    public float rotationSpeed = 60f; // ì´ˆë‹¹ íšŒì „ ì†ë„ (ë„ ë‹¨ìœ„)
+    public bool enableDebugLogs = false; // ë””ë²„ê·¸ ë¡œê·¸ë¥¼ ì‚¬ìš©í• ì§€ ì—¬ë¶€ë¥¼ ê²°ì •í•˜ëŠ” í”Œë˜ê·¸
+    public float minRotation = 0f; // ìµœì†Œ íšŒì „ ê°ë„
+    public float maxRotation = 360f; // ìµœëŒ€ íšŒì „ ê°ë„
+    private int[] angleToChannelMapping; // ê°ë„ì™€ ì±„ë„ ë§¤í•‘
+    private int previousChannel = -1; // ì´ì „ ì±„ë„ì„ ì €ì¥í•˜ëŠ” ë³€ìˆ˜
 
     private void Start()
     {
-        // °¢µµ¿Í Ã¤³ÎÀ» ¼öÀÛ¾÷À¸·Î ¸ÅÇÎÇÕ´Ï´Ù.
+        // ê°ë„ì™€ ì±„ë„ì„ ìˆ˜ì‘ì—…ìœ¼ë¡œ ë§¤í•‘í•©ë‹ˆë‹¤.
         angleToChannelMapping = new int[] { 3, 4, 5, 6, 0, 1, 2 };
     }
 
     private void Update()
     {
-        // ¼ıÀÚ Å°ÆĞµå ÀÔ·ÂÀ» °¡Á®¿É´Ï´Ù
         if (Input.GetKey(KeyCode.Keypad1))
-        {
-            RotateDial(-1); // ¿ŞÂÊÀ¸·Î È¸Àü
+        { 
+           RotateDial(-1);
         }
         else if (Input.GetKey(KeyCode.Keypad2))
         {
-            RotateDial(1); // ¿À¸¥ÂÊÀ¸·Î È¸Àü
+            RotateDial(1);
         }
     }
 
     private void RotateDial(int direction)
     {
-        // È¸Àü·®À» °è»êÇÕ´Ï´Ù.
+        // íšŒì „ëŸ‰ì„ ê³„ì‚°í•©ë‹ˆë‹¤.
         float rotationAmount = direction * rotationSpeed * Time.deltaTime;
 
-        // ÇöÀç È¸Àü°ªÀ» °¡Á®¿É´Ï´Ù.
+        // í˜„ì¬ íšŒì „ê°’ì„ ê°€ì ¸ì˜µë‹ˆë‹¤.
         float currentZRotation = transform.rotation.eulerAngles.z;
         float newZRotation = currentZRotation + rotationAmount;
 
-        // È¸Àü ¹üÀ§¸¦ 0µµ¿¡¼­ 360µµ·Î ¸ÂÃä´Ï´Ù.
+        // íšŒì „ ë²”ìœ„ë¥¼ 0ë„ì—ì„œ 360ë„ë¡œ ë§ì¶¥ë‹ˆë‹¤.
         if (newZRotation < 0f)
         {
             newZRotation += 360f;
@@ -48,33 +47,33 @@ public class ChannelDialController : MonoBehaviour
             newZRotation -= 360f;
         }
 
-        // È¸Àü ¹üÀ§¸¦ Á¦ÇÑÇÕ´Ï´Ù.
+        // íšŒì „ ë²”ìœ„ë¥¼ ì œí•œí•©ë‹ˆë‹¤.
         if (newZRotation >= minRotation && newZRotation <= maxRotation)
         {
             transform.Rotate(Vector3.forward, rotationAmount, Space.Self);
-            UpdateChannel(); // Ã¤³Î ¾÷µ¥ÀÌÆ®
+            UpdateChannel(); // ì±„ë„ ì—…ë°ì´íŠ¸
         }
     }
 
     void UpdateChannel()
     {
         float currentAngle = transform.rotation.eulerAngles.z;
-        int channel = GetChannelFromAngle(currentAngle); // °¢µµ¿¡¼­ Ã¤³ÎÀ» °è»ê
+        int channel = GetChannelFromAngle(currentAngle); // ê°ë„ì—ì„œ ì±„ë„ì„ ê³„ì‚°
         if (channel != previousChannel)
         {
-            tvController.SetChannel(channel); // TVController¿¡ Ã¤³Î ¼³Á¤
-            previousChannel = channel; // ÀÌÀü Ã¤³ÎÀ» ÇöÀç Ã¤³Î·Î ¾÷µ¥ÀÌÆ®
+            tvController.SetChannel(channel); // TVControllerì— ì±„ë„ ì„¤ì •
+            previousChannel = channel; // ì´ì „ ì±„ë„ì„ í˜„ì¬ ì±„ë„ë¡œ ì—…ë°ì´íŠ¸
 
             if (enableDebugLogs)
             {
-                Debug.Log("ÇöÀç Ã¤³Î: " + channel); // µğ¹ö±× ·Î±× Ãâ·Â
+                Debug.Log("í˜„ì¬ ì±„ë„: " + channel); // ë””ë²„ê·¸ ë¡œê·¸ ì¶œë ¥
             }
         }
     }
 
     int GetChannelFromAngle(float angle)
     {
-        // 0 ~ 360 °¢µµ ¹üÀ§¸¦ 0 ~ 6 Ã¤³Î ¹üÀ§·Î ¸ÅÇÎÇÕ´Ï´Ù.
+        // 0 ~ 360 ê°ë„ ë²”ìœ„ë¥¼ 0 ~ 6 ì±„ë„ ë²”ìœ„ë¡œ ë§¤í•‘í•©ë‹ˆë‹¤.
         int index = Mathf.RoundToInt(angle / 51f) % 7;
         return angleToChannelMapping[index];
     }
