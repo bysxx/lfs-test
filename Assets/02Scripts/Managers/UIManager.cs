@@ -1,5 +1,5 @@
+using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIManager : NormalSingleton<UIManager> {
@@ -17,11 +17,17 @@ public class UIManager : NormalSingleton<UIManager> {
     [Header("UI objs at cur Scene")]
     [SerializeField] private GameObject[] uiObjs;
 
+    private FadePanelUI fadePanel;
+
     protected override void Awake() {
         base.Awake();
         foreach (var obj in uiObjs) {
             curUIObjs.Add(obj.name, obj.gameObject);
         }
+    }
+
+    private void Start() {
+        fadePanel = UI_Instantiate("FadePanel").GetComponent<FadePanelUI>();
     }
 
     /// <summary>
@@ -129,5 +135,17 @@ public class UIManager : NormalSingleton<UIManager> {
     private GameObject UI_Instantiate(string name) {
         curUIObjs[name].SetActive(true);
         return curUIObjs[name];
+    }
+
+    public void FadeToScene(string sceneName=null) {
+        fadePanel.FadeToScene(sceneName);
+    }
+
+    public void FadeIn() {
+        fadePanel.FadeIn();
+    }
+
+    public void FadeOut() {
+        fadePanel.FadeOut();
     }
 }

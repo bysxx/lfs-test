@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a96296997c1ef24382dad8f55fe0e3e, type: 3}
+  m_Name: Task_ClearPattern2
+  m_EditorClassIdentifier: 
+  category: {fileID: 11400000, guid: 90eb4097ab5866e4d800eae446f01abb, type: 2}
+  id: TASK_CLEARPATTERN2
+  description: "\uBB34\uB9AC\uC758 \uC9C8\uBB38 \uD0C4\uD658 \uB9C9\uC544\uBCF4\uAE30"
+  handler: {fileID: 11400000, guid: 1037681cd3c12974ba05285fcc5dd8d9, type: 2}
+  targets:
+  - {fileID: 11400000, guid: 3c91656d9b68d1b49b8c7de3ca391337, type: 2}
+  initialConditionValue: {fileID: 0}
+  neededConditionToComplete: 1
+  canReceiveReportsDuringCompletion: 0

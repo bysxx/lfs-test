@@ -22,14 +22,22 @@ public class DialoguePanelUI : PopUpUI
     private string targetText;
     private List<SelectBtn> btns = new List<SelectBtn>();
 
+    [SerializeField] private DialogueManager manager;
+
     protected override void Init() {
         base.Init();
     }
+
 
     private void Start() {
 
         Bind<TextMeshProUGUI>(typeof(TMPs));
         gameObject.BindEvent(NextDialogue);
+
+        Access.DIalogueM.OnDialogueRegistered -= OnRegistered;
+        Access.DIalogueM.OnDialogueListRegistered -= OnRegistered;
+        Access.DIalogueM.OnDialogueNexted -= OnNexted;
+        Access.DIalogueM.OnDialogueCompleted -= OnCompleted;
 
         Access.DIalogueM.OnDialogueRegistered += OnRegistered;
         Access.DIalogueM.OnDialogueListRegistered += OnRegistered;
@@ -41,15 +49,18 @@ public class DialoguePanelUI : PopUpUI
         gameObject.SetActive(false);
     }
 
+
     private void OnEnable() {
         Init();
     }
 
     private void OnDestroy() {
-        Access.DIalogueM.OnDialogueRegistered -= OnRegistered;
-        Access.DIalogueM.OnDialogueListRegistered -= OnRegistered;
-        Access.DIalogueM.OnDialogueNexted -= OnNexted;
-        Access.DIalogueM.OnDialogueCompleted -= OnCompleted;
+        if (Access.DIalogueM) {
+            Access.DIalogueM.OnDialogueRegistered -= OnRegistered;
+            Access.DIalogueM.OnDialogueListRegistered -= OnRegistered;
+            Access.DIalogueM.OnDialogueNexted -= OnNexted;
+            Access.DIalogueM.OnDialogueCompleted -= OnCompleted;
+        } 
     }
 
     private void NextDialogue(PointerEventData data) {
@@ -63,7 +74,6 @@ public class DialoguePanelUI : PopUpUI
             Destroy(btn.gameObject);
         }
         btns.Clear();
-
         Access.UIM.ShowPopupUI<PopUpUI>(name);
         typeCO = StartCoroutine(TypeText(dialogue.currentNode.text));
         GetTMP((int)TMPs.TalkerText).text = dialogue.currentNode.character.TalkerName;
@@ -78,6 +88,8 @@ public class DialoguePanelUI : PopUpUI
         }
         else
             gameObject.SetInteractable(true);
+
+        if (dialogue.isAuto) gameObject.SetInteractable(false);
     }
 
     private void OnRegistered(List<DialogueGraph> dialogues) {
@@ -88,6 +100,7 @@ public class DialoguePanelUI : PopUpUI
         btns.Clear();
 
         Access.UIM.ShowPopupUI<PopUpUI>(name);
+
         typeCO = StartCoroutine(TypeText("무엇을 물어볼까?"));
         GetTMP((int)TMPs.TalkerText).text = "나";
         GetTMP((int)TMPs.TalkText).color = Color.white;
@@ -123,6 +136,9 @@ public class DialoguePanelUI : PopUpUI
         }
         else
             gameObject.SetInteractable(true);
+
+        if (dialogue.isAuto) gameObject.SetInteractable(false);
+
     }
 
     private void OnCompleted(DialogueGraph dialogue) {
@@ -147,6 +163,10 @@ public class DialoguePanelUI : PopUpUI
 
         isTyping = false;
 
+        if (DialogueManager.Instance.CurDialogue.isAuto) {
+            yield return new WaitForSeconds(0.5f);
+            DialogueManager.Instance.NextDialogue();
+        }
     }
 
     private void EndTypeText() {

@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - FxTemporaire
+  - Weapon
+  - SpecialBullet
+  - AnswerBullet
+  - QuizBullet
+  - PlayerBullet
+  - ReSpawnArea
   layers:
   - Default
   - TransparentFX
@@ -18,9 +24,9 @@ TagManager:
   - PlayerBullet
   - EnemyBullet
   - Border
-  - 
-  - 
-  - 
+  - SpecialBullet
+  - Floor
+  - Explosion
   - 
   - 
   - 
@@ -41,4 +47,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Fade
+    uniqueID: 4075528265
     locked: 0

@@ -32,11 +32,7 @@ public class SimpleEnemyChase : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        IHitable hitable = collision.gameObject.GetComponent<IHitable>();
-        if (hitable != null) {
-            hitable.Hit(1);
-        }
-        else {
+        if (!collision.gameObject.CompareTag("PlayerBullet")) {
             Instantiate(bombEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
