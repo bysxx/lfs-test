@@ -43,6 +43,7 @@ public class QuestCompletionNotifierUI : ObjectUI {
     {
         reservedQuests.Enqueue(quest);
 
+
         if (!gameObject.activeSelf)
         {
             gameObject.SetActive(true);

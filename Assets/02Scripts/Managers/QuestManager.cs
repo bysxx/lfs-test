@@ -27,10 +27,10 @@ public class QuestManager : DontDestroySingleton<QuestManager>
     public event QuestRegisteredHandler OnAchievementRegisteredHandler;
     public event QuestCompletedHandler OnAchievementCompletedHandler;
 
-    public IReadOnlyList<Quest> ActiveQuests => activeQuests;
-    public IReadOnlyList<Quest> CompletedQuests => completedQuests;
-    public IReadOnlyList<Quest> ActiveAchievements => activeAchievements;
-    public IReadOnlyList<Quest> CompletedAchievements => completedAchievements;
+    public List<Quest> ActiveQuests => activeQuests;
+    public List<Quest> CompletedQuests => completedQuests;
+    public List<Quest> ActiveAchievements => activeAchievements;
+    public List<Quest> CompletedAchievements => completedAchievements;
 
     public Quest CurMainQuest => curMainQuest;
 
