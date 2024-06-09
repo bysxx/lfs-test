@@ -1,9 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class QuestViewUI : PopUpUI
 {
+
+    enum Buttons {
+        ExiBtn
+    }
+
     [SerializeField] private QuestListViewControllerUI questListViewController;
     [SerializeField] private QuestDetailViewUI questDetailView;
 
@@ -13,7 +20,8 @@ public class QuestViewUI : PopUpUI
 
     private void Start()
     {
-        Init();
+
+        Bind<Button>(typeof(Buttons));
 
         var questSystem = Access.QuestM;
 
@@ -32,6 +40,8 @@ public class QuestViewUI : PopUpUI
 
         foreach (var tab in questListViewController.Tabs)
             tab.onValueChanged.AddListener(HideDetail);
+
+        GetButton((int)Buttons.ExiBtn).gameObject.BindEvent(OnExitBtnClicked);
 
         gameObject.SetActive(false);
     }
@@ -52,6 +62,7 @@ public class QuestViewUI : PopUpUI
 
     private void OnEnable()
     {
+        Init();
         if (questDetailView.Target != null) questDetailView.Show(questDetailView.Target);
     }
 
@@ -80,5 +91,9 @@ public class QuestViewUI : PopUpUI
     {
         questListViewController.RemoveQuestFromActiveListView(quest);
         if (questDetailView.Target == quest) questDetailView.Hide();
+    }
+
+    private void OnExitBtnClicked(PointerEventData data) {
+        ClosePopUpUI();
     }
 }

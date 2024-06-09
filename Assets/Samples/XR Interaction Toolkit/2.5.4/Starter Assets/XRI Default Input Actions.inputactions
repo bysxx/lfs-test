@@ -461,6 +461,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Main UI Trigger ",
+                    "type": "Button",
+                    "id": "d447091d-90ec-487a-8c4c-8b98b3cd7500",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -714,6 +723,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ShotGun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a0d50127-8454-4327-b61a-01d996bbafc1",
+                    "path": "<XRController>{LeftHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Main UI Trigger ",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
