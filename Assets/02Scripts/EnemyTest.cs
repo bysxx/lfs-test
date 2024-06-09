@@ -9,7 +9,7 @@ public class EnemyTest : MonoBehaviour
     [SerializeField] private Transform spawnPos;
 
     private void Start() {
-        SceneManager.LoadScene("BossScene");
+        
     }
 
 }
