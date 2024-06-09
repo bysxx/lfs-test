@@ -25,7 +25,7 @@ public class CarController : MonoBehaviour
         carRigidbody.MoveRotation(carRigidbody.rotation * rotateAmount);
 
         // 지형의 높낮이에 따른 위치 조정
-        AdjustCarHeight();
+       // AdjustCarHeight();
 
         // 운전대 회전 각도 계산
         currentSteerAngle = steerInput * maxSteerAngle;
