@@ -10,7 +10,6 @@ public class MainPanelUI : SceneUI
     enum Buttons {
         StartBtn,
         ExplainBtn,
-        OptionBtn,
         QuitBtn
     }
 
@@ -20,7 +19,7 @@ public class MainPanelUI : SceneUI
         Bind<Button>(typeof(Buttons));
 
         GetButton((int)Buttons.StartBtn).gameObject.BindEvent(OnStartBtnClicked);
-        GetButton((int)Buttons.OptionBtn).gameObject.BindEvent(OnOptionBtnClicked);
+        GetButton((int)Buttons.ExplainBtn).gameObject.BindEvent(OnExplainBtnClicked);
         GetButton((int)Buttons.QuitBtn).gameObject.BindEvent(OnQuitBtnClicked);
     }
 
@@ -30,10 +29,6 @@ public class MainPanelUI : SceneUI
 
     private void OnExplainBtnClicked(PointerEventData data) {
         Access.UIM.ShowPopupUI<PopUpUI>("ExplainPanel");
-    }
-
-    private void OnOptionBtnClicked(PointerEventData data) {
-        // TODO
     }
 
     private void OnQuitBtnClicked(PointerEventData data) {
