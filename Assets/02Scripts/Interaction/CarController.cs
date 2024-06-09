@@ -48,5 +48,5 @@ public class CarController : MonoBehaviour
             transform.position = newPosition;
         }
     }
-
+    
 }
