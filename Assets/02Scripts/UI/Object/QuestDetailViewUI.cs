@@ -64,7 +64,7 @@ public class QuestDetailViewUI : ObjectUI
 
     private void CancelQuest(PointerEventData eventData)
     {
-        if (Target.IsCancelable) Target.Cancel();
+        if (Target != null && Target.IsCancelable) Target.Cancel();
     }
 
     public void Show(Quest quest)

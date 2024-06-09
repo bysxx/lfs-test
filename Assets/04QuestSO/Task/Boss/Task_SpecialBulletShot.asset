@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a96296997c1ef24382dad8f55fe0e3e, type: 3}
+  m_Name: Task_SpecialBulletShot
+  m_EditorClassIdentifier: 
+  category: {fileID: 11400000, guid: 8700247020edaad459e00c6a4be98c27, type: 2}
+  id: TASK_SPECIALBULLETSHOT
+  description: "\"\uC815\uB2F5 \uD0C4\uD658\" \uC3F4\uBCF4\uAE30"
+  handler: {fileID: 11400000, guid: 1037681cd3c12974ba05285fcc5dd8d9, type: 2}
+  targets:
+  - {fileID: 11400000, guid: 5a43e9d631561be4783975ffb379f29b, type: 2}
+  initialConditionValue: {fileID: 0}
+  neededConditionToComplete: 1
+  canReceiveReportsDuringCompletion: 0

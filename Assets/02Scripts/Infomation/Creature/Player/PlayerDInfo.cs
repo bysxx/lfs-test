@@ -6,4 +6,5 @@ using UnityEngine.Playables;
 public class PlayerDInfo : CreatureDInfo
 {
     public PlayableDirector CurDirector { get; set; } = null;
+    public GunWeapon CurGunWeapon { get; set; } = null;
 }

@@ -1,3 +1,4 @@
+using Dialogue;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,29 +6,53 @@ using UnityEngine;
 public class BossController : Controller, IHitable {
 
     [Header("Boss Info")]
-    [SerializeField] private int hp;
     [SerializeField] private GameObject deadEffect;
-    [SerializeField] private Animator animator;
+    public DynamicVariable<int> Hp;
+    [field : SerializeField] public Animator BossAnimator { get; private set; }
+    [SerializeField] private DialogueGraph bossStartDialogue;
+    [SerializeField] private DialogueGraph bossDeadDialogue;
+    [SerializeField] private DialogueGraph[] bossRandomDialgues;
 
+    public BossFSM Fsm { get; private set; }
+    public State IdleState { get; private set; }
+    public State SpawnState { get; private set; }
+    public State QuizState { get; private set; }
 
-    [Header("Spawn Info")]
-    [SerializeField] private GameObject[] enemyPrefab;
-    [SerializeField] private GameObject spawnEffect;
-    [SerializeField] private GameObject spawnPos;
-    [SerializeField] private int[] spawnCnt;
+    private void Awake() {
+        IdleState = GetComponent<BossIdleState>();
+        SpawnState = GetComponent<BossSpawnState>();
+        QuizState = GetComponent<BossQuizState>();
+    }
 
-    public int curPhase = 0;
+    private void Start() {
 
+        AnswerBullet.OnCorrectBulletTrigger += OnCorrectBulletTrigger;
+
+        Fsm = new BossFSM(this);
+        Fsm.Transition(IdleState);
+
+        if (GameManager.Instance.isTutorialCleared) Access.DIalogueM.RegisterDialogue(bossStartDialogue);
+    }
+
+    private void OnDestroy() {
+        AnswerBullet.OnCorrectBulletTrigger -= OnCorrectBulletTrigger;
+    }
+
+    private void Update() {
+        Fsm.Update();
+    }
 
     public void Dead() {
-        animator.SetTrigger("Die");
-        Invoke(nameof(DeadEffect), 3f);
+        Access.DIalogueM.RegisterDialogue(bossDeadDialogue);
+        BossAnimator.SetTrigger("Die");
+        GetComponent<QuestReporter>().Report(2);
+        Invoke(nameof(DeadEffect), 3.2f);
     }
 
     public void Hit(int dmg) {
-        hp -= dmg;
-        if (hp <= 0) {
-            hp = 0;
+        Hp.Accessor -= dmg;
+        if (Hp.Accessor <= 0) {
+            Hp.Accessor = 0;
             Dead();
         }
     }
@@ -37,38 +62,22 @@ public class BossController : Controller, IHitable {
         Destroy(gameObject);
     }
 
-    private IEnumerator SpawnEnemy(int cnt) {
+    public void SetPattern(int i) {
 
-        Transform[] result = GetRandomTransforms(cnt, spawnPos.transform);
+        if (GameManager.Instance.isTutorialCleared) Access.DIalogueM.RegisterDialogue(bossRandomDialgues[Random.Range(0, bossRandomDialgues.Length - 1)]);
 
-        foreach (Transform t in result) {
-            Instantiate(spawnEffect, t.position, Quaternion.identity);
-            Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)], t.position, Quaternion.identity);
-            yield return new WaitForSeconds(0.5f);
+        switch (i) {
+            case 0:
+                Fsm.Transition(SpawnState);
+                break;
+            case 1:
+                Fsm.Transition(QuizState);
+                break;
         }
     }
 
-    private Transform[] GetRandomTransforms(int cnt, Transform origin) {
-        List<Transform> children = new List<Transform>();
-        foreach (Transform child in origin) {
-            children.Add(child);
-        }
-
-        if (children.Count <= cnt) {
-            return children.ToArray();
-        }
-
-        System.Random random = new();
-        int n = children.Count;
-
-        for (int i = n - 1; i > 0; i--) {
-            int j = random.Next(0, i + 1);
-            Transform temp = children[i];
-            children[i] = children[j];
-            children[j] = temp;
-        }
-
-        return children.GetRange(0, cnt).ToArray();
+    private void OnCorrectBulletTrigger(AnswerBullet bullet) {
+        Hit(1);
     }
 
 }

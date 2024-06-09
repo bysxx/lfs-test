@@ -38,6 +38,7 @@ public class Quest : ScriptableObject
     [Header("Option")]
     [SerializeField] private bool useAutoComplete;
     [SerializeField] private bool isCancelable;
+    [SerializeField] private bool isDuplicatable;
 
     [Header("Condition")]
     [SerializeField] private QuestAcceptionCondition[] acceptionConditions;
@@ -59,6 +60,7 @@ public class Quest : ScriptableObject
     public bool IsComplete => State == QuestState.Complete;
     public bool IsCancel => State == QuestState.Cancel;
     public virtual bool IsCancelable => isCancelable && cancelConditions.All(x => x.IsPass(this));
+    public bool IsDuplicatable => isDuplicatable;
     public bool IsAcceptable => acceptionConditions.All(x => x.IsPass(this)) && !Access.QuestM.ContainsInCompleteQuests(this) && !Access.QuestM.ContainsInActiveQuests(this);
 
     public event TaskConditionChangedHandler OnTaskConditionChanged;
@@ -107,6 +109,7 @@ public class Quest : ScriptableObject
 
         if (CurrentTaskGroup.IsAllTaskComplete)
         {
+
             if (currentTaskGroupIndex + 1 == taskGroups.Length)
             {
                 State = QuestState.WaitingForCompletion;
