@@ -24,9 +24,9 @@ public class ChannelDialController : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.Alpha2))
         {
-            float rotationInput = Input.GetAxis("Horizontal"); // ���̽�ƽ�� Horizontal �� �Է��� ����մϴ�
+            float rotationInput = Input.GetAxis("Horizontal");
 
-            if (Mathf.Abs(rotationInput) > 0.1f) // ���� �Է� ����
+            if (Mathf.Abs(rotationInput) > 0.1f)
             {
                 RotateDial(rotationInput);
             }
