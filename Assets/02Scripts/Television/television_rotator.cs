@@ -18,11 +18,8 @@ public class ChannelDialController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha1))
-        { 
-           RotateDial(-1);
-        }
-        else if (Input.GetKey(KeyCode.Alpha2))
+
+        if (Input.GetButton("Fire1"))
         {
             float rotationInput = Input.GetAxis("Horizontal");
 
