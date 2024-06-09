@@ -36,7 +36,7 @@ public class ReviewPanelUI : SceneUI
 
     [SerializeField] private QuizDataBase quizData;
     private List<QuizReview> quizReviews = new List<QuizReview>();
-    private int curExplainIdx = 0;
+    private int curExplainIdx = -1;
 
 
     private void Start() {
@@ -65,13 +65,13 @@ public class ReviewPanelUI : SceneUI
 
     private void OnNextBtnClicked(PointerEventData data) {
 
-        if (curExplainIdx >= quizReviews.Count) {
+        if (curExplainIdx >= quizReviews.Count - 1) {
             GetButton((int)Buttons.OkBtn).gameObject.SetActive(true);
             GetTMP((int)TMPs.ExplainText).gameObject.SetActive(false);
             return;
         }
 
-        QuizReview quizReview = quizReviews[curExplainIdx++];
+        QuizReview quizReview = quizReviews[++curExplainIdx];
         GetImage((int)Images.ReviewImg).sprite = quizReview.explainImg;
         GetTMP((int)TMPs.ExplainText).text = quizReview.explain;
     }
@@ -80,7 +80,7 @@ public class ReviewPanelUI : SceneUI
 
         if (curExplainIdx == 0) return;
 
-        if (curExplainIdx >= quizReviews.Count) {
+        if (curExplainIdx >= quizReviews.Count - 1) {
             GetButton((int)Buttons.OkBtn).gameObject.SetActive(false);
             GetTMP((int)TMPs.ExplainText).gameObject.SetActive(true);
         }
