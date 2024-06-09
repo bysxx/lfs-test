@@ -12,14 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 031f197ddd4405148b247cf8dcb867d9, type: 3}
   m_Name: Quest_phone
   m_EditorClassIdentifier: 
-  category: {fileID: 0}
+  category: {fileID: 11400000, guid: cb41e3ee86109484e8715fc0abc80b13, type: 2}
   icon: {fileID: 0}
-  id: 
-  displayName: 
-  description: 
-  taskGroups: []
+  id: QUEST_MAIN
+  displayName: "\uC804\uD654 \uBC1B\uC544\uBCF4\uAE30"
+  description: "\uC804\uD654\uB97C \uBC1B\uC544\uBCF4\uC790"
+  taskGroups:
+  - tasks:
+    - {fileID: 11400000, guid: f3ac4bae993d7824295bdff1f779e49c, type: 2}
   rewards: []
-  useAutoComplete: 0
+  useAutoComplete: 1
   isCancelable: 0
+  isDuplicatable: 0
   acceptionConditions: []
   cancelConditions: []

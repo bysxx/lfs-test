@@ -106,11 +106,7 @@ public class QuestManager : DontDestroySingleton<QuestManager>
     /// <param name="category"></param>
     /// <param name="target"></param>
     /// <param name="conditionCount"></param>
-    public void ReceiveReport(Category category, TaskTarget target, int conditionCount)
-    {
-        Debug.Log(category.ID);
-        Debug.Log(target.Value);
-    }
+    public void ReceiveReport(Category category, TaskTarget target, int conditionCount) => ReceiveReport(category.ID, target.Value, conditionCount);
 
     /// <summary>
     /// Overloading of `ReceiveReport(string category, object target, int conditionCount)`.
