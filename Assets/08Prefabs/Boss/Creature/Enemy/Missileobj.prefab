@@ -131,6 +131,9 @@ MonoBehaviour:
   hitEffect: {fileID: 4593184484909914552, guid: 2e1e9506f5904a64b81744324fb7cd50, type: 3}
   speed: 20
   dmg: 2
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 8836
 --- !u!1 &1819327684096151449
 GameObject:
   m_ObjectHideFlags: 0

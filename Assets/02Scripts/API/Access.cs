@@ -22,7 +22,19 @@ public static class Access {
     /// </summary>
     public static QuestManager QuestM { get { return QuestManager.Instance; } }
 
+    /// <summary>
+    /// DialogueManager
+    /// </summary>
     public static DialogueManager DIalogueM { get { return DialogueManager.Instance; } }
 
+    /// <summary>
+    /// BossStageManager
+    /// </summary>
+    public static BossStageManager BossStageM { get { return BossStageManager.Instance; } }
+
+    /// <summary>
+    /// GameManager
+    /// </summary>
+    public static GameManager GameM { get { return GameManager.Instance; } }
     public static SceneManager SceneM { get { return SceneManager.Instance; } }
 }

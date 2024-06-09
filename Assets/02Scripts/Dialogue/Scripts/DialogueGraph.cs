@@ -8,6 +8,7 @@ using XNode;
 namespace Dialogue {
     [CreateAssetMenu(menuName = "Dialogue/DialogueGraph", fileName = "DialogueGraph", order = 0)]
     public class DialogueGraph : NodeGraph {
+
         [HideInInspector]
         public ChatNode currentNode;
         public bool isSkipable;
@@ -16,6 +17,9 @@ namespace Dialogue {
 
         public DialogueAcceptionCondition[] acceptionConditions;
         public string dialogueName;
+
+        [Space]
+        public bool isAuto;
 
         public bool IsAcceptable => acceptionConditions.All(x => x.IsPass(this));
 
@@ -30,8 +34,18 @@ namespace Dialogue {
 
         public void BindEventAtEventNode(string name, UnityAction action) {
             EventNode eventNode = FindEventNode(name);
-            eventNode.trigger.RemoveAllListeners();
+            eventNode.trigger.RemoveListener(action);
             eventNode.trigger.AddListener(action);
+        }
+
+        public void RemoveEventAtEventNode(string name, UnityAction action) {
+            EventNode eventNode = FindEventNode(name);
+            eventNode.trigger.RemoveListener(action);
+        }
+
+        public void RemoveAllEventAtEventNode(string name) {
+            EventNode eventNode = FindEventNode(name);
+            eventNode.trigger.RemoveAllListeners();
         }
 
         public bool NextNode() {

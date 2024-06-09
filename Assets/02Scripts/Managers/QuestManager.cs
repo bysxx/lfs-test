@@ -16,6 +16,8 @@ public class QuestManager : DontDestroySingleton<QuestManager>
     private List<Quest> activeAchievements = new List<Quest>();
     private List<Quest> completedAchievements = new List<Quest>();
 
+    private Quest curMainQuest;
+
     private QuestDatabase questDatatabase;
     private QuestDatabase achievementDatabase;
 
@@ -29,6 +31,8 @@ public class QuestManager : DontDestroySingleton<QuestManager>
     public IReadOnlyList<Quest> CompletedQuests => completedQuests;
     public IReadOnlyList<Quest> ActiveAchievements => activeAchievements;
     public IReadOnlyList<Quest> CompletedAchievements => completedAchievements;
+
+    public Quest CurMainQuest => curMainQuest;
 
     protected override void Awake()
     {
@@ -44,6 +48,9 @@ public class QuestManager : DontDestroySingleton<QuestManager>
     /// <returns></returns>
     public Quest Register(Quest quest)
     {
+
+        if (completedQuests.Contains(quest) && !quest.IsDuplicatable) return null;
+
         // Use a copy of the original quest scriptable object for runtime operations.
         var newQuest = quest.Clone();
 
@@ -63,6 +70,8 @@ public class QuestManager : DontDestroySingleton<QuestManager>
             newQuest.OnCanceled += OnQuestCanceled;
 
             activeQuests.Add(newQuest);
+
+            if (newQuest.Category == "CATEGORY_MAIN") curMainQuest = newQuest;
 
             newQuest.OnRegister();
             OnQuestRegisteredHandler?.Invoke(newQuest);
@@ -97,7 +106,11 @@ public class QuestManager : DontDestroySingleton<QuestManager>
     /// <param name="category"></param>
     /// <param name="target"></param>
     /// <param name="conditionCount"></param>
-    public void ReceiveReport(Category category, TaskTarget target, int conditionCount) => ReceiveReport(category.ID, target.Value, conditionCount);
+    public void ReceiveReport(Category category, TaskTarget target, int conditionCount)
+    {
+        Debug.Log(category.ID);
+        Debug.Log(target.Value);
+    }
 
     /// <summary>
     /// Overloading of `ReceiveReport(string category, object target, int conditionCount)`.

@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GemBossController
+  m_Controller: {fileID: 9100000, guid: 663dc570a2a083f419cb9896abb6d1ec, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: d7ce16f1b03e5c94d860ef65ac686a6e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7199ece11c64d9c4887ba23e8dcc1f55, type: 2}

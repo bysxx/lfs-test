@@ -99,6 +99,7 @@ public class DialController : MonoBehaviour
             if (currentIndex >= targetNumberSequence.Length)
             {
                 Debug.Log("¿Ï·á!");
+                GetComponent<QuestReporter>().Report(0);
                 StartCoroutine(ReturnToInitialPosition());
                 currentIndex = 0;
             }
