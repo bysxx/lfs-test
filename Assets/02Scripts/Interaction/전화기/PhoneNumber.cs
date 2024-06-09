@@ -20,7 +20,7 @@ public class PhoneNumber : MonoBehaviour
             if (IsCorrectNumber())
             {
                 Debug.Log("정답 번호 입력 완료!");
-                GetComponentInChildren<QuestReporter>().Report();
+                GetComponentInChildren<QuestReporter>().Report(0);
             }
             else
             {

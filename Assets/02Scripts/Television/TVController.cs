@@ -36,7 +36,7 @@ public class TVController : MonoBehaviour
         }
 
         if (currentChannel == 5)
-            GetComponentInChildren<QuestReporter>().Report();
+            GetComponent<QuestReporter>().Report(0);
 
 
         Debug.Log("현재 채널: " + currentChannel);
