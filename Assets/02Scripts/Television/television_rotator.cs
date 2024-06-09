@@ -18,18 +18,19 @@ public class ChannelDialController : MonoBehaviour
 
     private void Update()
     {
-        // 숫자 키패드 입력을 가져옵니다
-        if (Input.GetKey(KeyCode.Keypad1))
+        // 특정 버튼을 누르고 있을 때만 조이스틱 입력을 받습니다
+        if (Input.GetButton("Fire1")) // Fire1 버튼을 누르고 있을 때만
         {
-            RotateDial(-1); // 왼쪽으로 회전
-        }
-        else if (Input.GetKey(KeyCode.Keypad2))
-        {
-            RotateDial(1); // 오른쪽으로 회전
+            float rotationInput = Input.GetAxis("Horizontal"); // 조이스틱의 Horizontal 축 입력을 사용합니다
+
+            if (Mathf.Abs(rotationInput) > 0.1f) // 작은 입력 무시
+            {
+                RotateDial(rotationInput);
+            }
         }
     }
 
-    private void RotateDial(int direction)
+    private void RotateDial(float direction)
     {
         // 회전량을 계산합니다.
         float rotationAmount = direction * rotationSpeed * Time.deltaTime;

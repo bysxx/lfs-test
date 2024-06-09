@@ -38,16 +38,14 @@ public class TVController : MonoBehaviour
         if (currentChannel == 5)
             GetComponentInChildren<QuestReporter>().Report();
 
-
         Debug.Log("현재 채널: " + currentChannel);
     }
 
-    
-
-    // TV의 전원 상태를 반환하는 메서드 (항상 켜져있음)
+    // TV의 전원 상태를 반환하는 메서드
     public bool IsOn()
     {
-        return true;
+        // TV의 전원 상태는 현재 채널이 설정되어 있는지 여부로 판단합니다.
+        return currentChannel >= 0 && currentChannel < screens.Length;
     }
 
     // TV의 볼륨을 설정하는 메서드
