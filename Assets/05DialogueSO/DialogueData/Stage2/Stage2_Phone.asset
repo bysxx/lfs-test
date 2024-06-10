@@ -146,7 +146,7 @@ MonoBehaviour:
   isReTalkable: 0
   acceptionConditions:
   - {fileID: 11400000, guid: 4567dad51fba625438e898bdd373e89a, type: 2}
-  dialogueName: "1960\uB144\uB300\uC5D0\uC11C \uD0C8\uCD9C\uD558\uAE30 2"
+  dialogueName: "TV \uD018\uC2A4\uD2B8\uB97C \uD074\uB9AC\uC5B4\uD588\uC5B4!"
   isAuto: 0
 --- !u!114 &541737690969815662
 MonoBehaviour:
@@ -851,6 +851,8 @@ MonoBehaviour:
   output: {fileID: 0}
   character: {fileID: 11400000, guid: 660e75534e996ee4799e5dc62a07d585, type: 2}
   text: "\uC815\uB9D0 \uC88B\uC740 \uC0DD\uAC01\uC774\uC57C! \n\uBC15\uBB3C\uAD00\uC758
-    \uC804\uD654\uBC88\uD638\uB294 031-3691-694\uC57C"
+    \uC804\uD654\uBC88\uD638\uB294 031-3691-694\uC57C\n\uADF8\uB9AC\uACE0 \uB9CC\uC57D
+    \uD55C \uC22B\uC790\uB77C\uB3C4 \uD2C0\uB9B0\uB2E4\uBA74 \uCC98\uC74C\uBD80\uD130
+    \uC785\uB825\uD574\uC57C \uD55C\uB2E4\uB294 \uAC70 \uAE30\uC5B5\uD574!"
   answers:
   - text: "\uD55C\uBC88 \uC2DC\uB3C4\uD574\uBCFC\uAC8C!"
