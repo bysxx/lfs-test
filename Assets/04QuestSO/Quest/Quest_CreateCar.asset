@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   category: {fileID: 11400000, guid: 6f3c5a99cfcad2f49bf6da10f6b7f14f, type: 2}
   icon: {fileID: 0}
-  id: 
+  id: QUEST_CREATECAR
   displayName: "\uBB34\uB9AC\uAC00 \uBD80\uC21C \uCC28 \uC870\uB9BD\uD558\uAE30"
   description: "\uBB34\uB9AC\uAC00 \uBD80\uC21C \uCC28 \uC870\uB9BD\uD558\uAE30"
   taskGroups:
@@ -23,5 +23,6 @@ MonoBehaviour:
   rewards: []
   useAutoComplete: 1
   isCancelable: 0
+  isDuplicatable: 0
   acceptionConditions: []
   cancelConditions: []

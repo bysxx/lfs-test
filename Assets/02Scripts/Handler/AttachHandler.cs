@@ -6,7 +6,7 @@ public class AttachHandler : MonoBehaviour
     [SerializeField] private XRSocketInteractor socketInteractor;
     [SerializeField] private GameObject allowedInteractableObject;
     [SerializeField] private TaskTarget target; 
-    [SerializeField] private Quest quest;
+    [SerializeField] private Category category;
 
     void Start()
     {
@@ -35,7 +35,7 @@ public class AttachHandler : MonoBehaviour
         }
         else
         {
-            Access.QuestM.ReceiveReport(quest.Category, target, 1);
+            Access.QuestM.ReceiveReport(category, target, 1);
         }
     }
 }

@@ -137,8 +137,7 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   character: {fileID: 11400000, guid: 660e75534e996ee4799e5dc62a07d585, type: 2}
-  text: "\uADF8\uB7FC \uC6B4\uC804\uC744 \uD55C \uBC88 \uD574\uBCF4\uACE0 \uC2F6\uC9C0
-    \uC54A\uC544? "
+  text: "\uADF8\uB7FC \uC6B4\uC804\uC744 \uD574\uBCF4\uACE0 \uC2F6\uC9C0 \uC54A\uC544? "
   answers:
   - text: "\uC624 \uD574\uBCF4\uACE0 \uC2F6\uC5B4 "
   - text: "\uAD73\uC774?  "
@@ -160,7 +159,7 @@ MonoBehaviour:
   - {fileID: 3582579776570491588}
   - {fileID: -4958376434131588984}
   - {fileID: 3317678076700266979}
-  currentNode: {fileID: 0}
+  currentNode: {fileID: 3582579776570491588}
   isSkipable: 0
   isCancelable: 0
   isReTalkable: 0

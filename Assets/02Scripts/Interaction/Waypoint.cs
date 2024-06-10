@@ -3,16 +3,20 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Waypoint : MonoBehaviour
 {
-    public string waypointName; // ¿þÀÌÆ÷ÀÎÆ® ÀÌ¸§
+    public string waypointName; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ì¸ï¿½
     [SerializeField] private TaskTarget target;
     [SerializeField] private Quest quest;
+    [SerializeField] private GameObject particleEffect;
+
+    private bool isPassed;
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) // ÀÚµ¿Â÷¿¡ "Player" ÅÂ±×°¡ ÀÖ´Ù°í °¡Á¤
+        if (!isPassed && other.CompareTag("Player")) // ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ "Player" ï¿½Â±×°ï¿½ ï¿½Ö´Ù°ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             Access.QuestM.ReceiveReport(quest.Category, target, 1);
-            Debug.Log("Áö³ª°¬´ç");
+            particleEffect.SetActive(false);
+            isPassed = true;
         }
     }
 }

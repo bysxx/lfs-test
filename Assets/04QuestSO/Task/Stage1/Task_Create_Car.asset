@@ -17,7 +17,7 @@ MonoBehaviour:
   description: create car
   handler: {fileID: 11400000, guid: 1037681cd3c12974ba05285fcc5dd8d9, type: 2}
   targets:
-  - {fileID: 11400000, guid: 955b267c7db7de64b994a60e0a80c32b, type: 2}
+  - {fileID: 11400000, guid: b6f6697277901c04a8bd13ec25cff9b2, type: 2}
   initialConditionValue: {fileID: 0}
   neededConditionToComplete: 2
   canReceiveReportsDuringCompletion: 0
