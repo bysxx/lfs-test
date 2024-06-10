@@ -6694,7 +6694,7 @@ PrefabInstance:
     - target: {fileID: 824353509257287324, guid: 47ba6b5ea49424707823f9095e02a556, type: 3}
       propertyPath: cars.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 170e8233877f94667ac9b8f259b0a4b8, type: 2}
+      objectReference: {fileID: 862160186}
     - target: {fileID: 1107346033677242714, guid: 47ba6b5ea49424707823f9095e02a556, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -6705,7 +6705,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6703897868440190450, guid: 47ba6b5ea49424707823f9095e02a556, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6703897868440190452, guid: 47ba6b5ea49424707823f9095e02a556, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6733963329046303327, guid: 47ba6b5ea49424707823f9095e02a556, type: 3}
       propertyPath: target
