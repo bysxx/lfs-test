@@ -11,6 +11,7 @@ public class MenuPanelUI : PopUpUI
         MainMenuBtn,
         CurQuestBtn,
         CurProgressBtn,
+        ExplainBtn,
         ExitBtn
     }
 
@@ -26,6 +27,7 @@ public class MenuPanelUI : PopUpUI
         GetButton((int)Buttons.MainMenuBtn).gameObject.BindEvent(OnMainMenuBtnClicked);
         GetButton((int)Buttons.CurQuestBtn).gameObject.BindEvent(OnCurQuestBtnClicked);
         GetButton((int)Buttons.CurProgressBtn).gameObject.BindEvent(OnCurProgressBtnClicked);
+        GetButton((int)Buttons.ExplainBtn).gameObject.BindEvent(OnExplainBtnClicked);
         GetButton((int)Buttons.ExitBtn).gameObject.BindEvent(OnExitBtnClicked);
 
         gameObject.SetActive(false);
@@ -44,6 +46,9 @@ public class MenuPanelUI : PopUpUI
     }
     private void OnCurProgressBtnClicked(PointerEventData data) {
         Access.UIM.ShowPopupUI<PopUpUI>("CurProgressPanel");
+    }
+    private void OnExplainBtnClicked(PointerEventData data) {
+        Access.UIM.ShowPopupUI<PopUpUI>("ExplainPanel");
     }
     private void OnExitBtnClicked(PointerEventData data) {
         ClosePopUpUI();
