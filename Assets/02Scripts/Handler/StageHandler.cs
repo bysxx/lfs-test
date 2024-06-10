@@ -5,13 +5,13 @@ using UnityEngine;
 public class StageHandler : MonoBehaviour
 {
     [SerializeField] private Quest quest;
-    [SerializeField] private GameObject car;
+    [SerializeField] private List<GameObject> cars;
 
     // Start is called before the first frame update
     void Start()
     {
         Access.QuestM.OnQuestRegisteredHandler += (quest) => {
-            car.SetActive(true);
+            cars.ForEach(car => car.SetActive(true));
             Debug.Log("Car is activated");
         };
 
