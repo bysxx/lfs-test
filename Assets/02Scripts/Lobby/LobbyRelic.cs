@@ -5,6 +5,7 @@ using UnityEngine;
 public class LobbyRelic : MonoBehaviour
 {
     [field: SerializeField] public int StageNum { get; private set; }
+    [field: SerializeField, Multiline] public string RelicName { get; private set; }
     [field: SerializeField, Multiline] public string RelicExplain { get; private set; }
     [field: SerializeField] public Sprite RelicImage { get; private set; }
 
