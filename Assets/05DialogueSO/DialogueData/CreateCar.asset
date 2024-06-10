@@ -281,9 +281,9 @@ MonoBehaviour:
   isSkipable: 0
   isCancelable: 0
   isReTalkable: 0
-  acceptionConditions:
-  - {fileID: 11400000, guid: bdec0a342e7d51e44a2675b56cfa323e, type: 2}
+  acceptionConditions: []
   dialogueName: "\uB8E8\uB098\uC758 \uBD80\uD0C1 \uB4E4\uC5B4\uC8FC\uAE30"
+  isAuto: 0
 --- !u!114 &7059537945449024615
 MonoBehaviour:
   m_ObjectHideFlags: 0
