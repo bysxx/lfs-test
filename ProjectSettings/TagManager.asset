@@ -12,6 +12,9 @@ TagManager:
   - PlayerBullet
   - ReSpawnArea
   - Wall
+  - Grabbable
+  - Direct
+  - StopPoint
   layers:
   - Default
   - TransparentFX

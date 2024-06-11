@@ -22,8 +22,6 @@ public class DialoguePanelUI : PopUpUI
     private string targetText;
     private List<SelectBtn> btns = new List<SelectBtn>();
 
-    [SerializeField] private DialogueManager manager;
-
     protected override void Init() {
         base.Init();
     }
@@ -70,6 +68,8 @@ public class DialoguePanelUI : PopUpUI
 
     private void OnRegistered(DialogueGraph dialogue) {
 
+        EndTypeText();
+
         foreach (SelectBtn btn in btns) {
             Destroy(btn.gameObject);
         }
@@ -93,6 +93,8 @@ public class DialoguePanelUI : PopUpUI
     }
 
     private void OnRegistered(List<DialogueGraph> dialogues) {
+
+        EndTypeText();
 
         foreach (SelectBtn btn in btns) {
             Destroy(btn.gameObject);
@@ -118,6 +120,8 @@ public class DialoguePanelUI : PopUpUI
 
     private void OnNexted(DialogueGraph dialogue) {
 
+        EndTypeText();
+
         foreach (SelectBtn btn in btns) {
             Destroy(btn.gameObject);
         }
@@ -142,6 +146,9 @@ public class DialoguePanelUI : PopUpUI
     }
 
     private void OnCompleted(DialogueGraph dialogue) {
+
+        EndTypeText();
+
         foreach (SelectBtn btn in btns) {
             Destroy(btn.gameObject);
         }
@@ -150,6 +157,8 @@ public class DialoguePanelUI : PopUpUI
     }
 
     private IEnumerator TypeText(string target) {
+
+        EndTypeText();
 
         GetTMP((int)TMPs.TalkText).text = "";
         int idx = 0;
@@ -162,6 +171,8 @@ public class DialoguePanelUI : PopUpUI
         }
 
         isTyping = false;
+
+        if (DialogueManager.Instance.CurDialogue == null) yield break;
 
         if (DialogueManager.Instance.CurDialogue.isAuto) {
             yield return new WaitForSeconds(0.5f);

@@ -16,7 +16,8 @@ public class DriveCarHandler : MonoBehaviour
         };
 
         Access.QuestM.OnQuestCompletedHandler += (quest) => {
-            Access.SceneM.LoadScene("stage2", 3.0f);
+            Access.Player.StopPlayer();
+            Access.UIM.FadeToScene("LobbyScene");
         };
     }
 }
