@@ -5,7 +5,7 @@ public class Waypoint : MonoBehaviour
 {
     public string waypointName; // ��������Ʈ �̸�
     [SerializeField] private TaskTarget target;
-    [SerializeField] private Quest quest;
+    [SerializeField] private Category category;
     [SerializeField] private GameObject particleEffect;
 
     private bool isPassed;
@@ -14,7 +14,7 @@ public class Waypoint : MonoBehaviour
     {
         if (!isPassed && other.CompareTag("Player")) // �ڵ����� "Player" �±װ� �ִٰ� ����
         {
-            Access.QuestM.ReceiveReport(quest.Category, target, 1);
+            Access.QuestM.ReceiveReport(category, target, 1);
             particleEffect.SetActive(false);
             isPassed = true;
         }

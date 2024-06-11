@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 031f197ddd4405148b247cf8dcb867d9, type: 3}
   m_Name: Quest_CreateCar
   m_EditorClassIdentifier: 
-  category: {fileID: 11400000, guid: 6f3c5a99cfcad2f49bf6da10f6b7f14f, type: 2}
+  category: {fileID: 11400000, guid: cb41e3ee86109484e8715fc0abc80b13, type: 2}
   icon: {fileID: 0}
   id: QUEST_CREATECAR
-  displayName: "\uBB34\uB9AC\uAC00 \uBD80\uC21C \uCC28 \uC870\uB9BD\uD558\uAE30"
-  description: "\uBB34\uB9AC\uAC00 \uBD80\uC21C \uCC28 \uC870\uB9BD\uD558\uAE30"
+  displayName: "\uACE0\uC7A5\uB09C \uC2E0\uC9C4 \uD37C\uBE14\uB9AC\uCE74\uB97C \uACE0\uCE58\uAE30"
+  description: "\uC548\uC0B0\uC758 \uC790\uB3D9\uCC28 \uC5ED\uC0AC\uB97C \uBE7C\uC557\uACA8
+    \uACE0\uC7A5\uC774 \uB098\uBC84\uB9B0 \uC2E0\uC9C4 \uD37C\uBE14\uB9AC\uCE74\uB97C
+    \uACE0\uCCD0\uBCF4\uC790. Grip \uBC84\uD2BC\uC73C\uB85C \uC9D1\uC5B4\uC11C \uB4E4\uC5B4\uAC08
+    \uB9CC\uD55C \uACF3\uC5D0 \uB450\uACE0, Grip \uBC84\uD2BC\uC744 \uD574\uC81C\uD558\uC790!"
   taskGroups:
   - tasks:
     - {fileID: 11400000, guid: 2e3d086395a20437588074edb74c4fec, type: 2}

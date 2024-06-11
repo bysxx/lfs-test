@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stage2TutorialComplete : TutorialBase
+public class StageTutorialComplete : TutorialBase
 {
     [Header("Tutorial Info")]
     [SerializeField] private DialogueGraph endTalk;
+    [SerializeField] private string nextScene;
+    [SerializeField] private int curStage;
 
     private bool isTalkEnd;
 
@@ -26,8 +28,8 @@ public class Stage2TutorialComplete : TutorialBase
 
     public override void Exit() {
         endTalk.RemoveEventAtEventNode("EndTalkEndEvent", EndTalkEndEvent);
-        Access.GameM.stageProgress[1] = true;
-        Access.UIM.FadeToScene("LobbyScene");
+        Access.GameM.stageProgress[curStage] = true;
+        Access.UIM.FadeToScene(nextScene);
     }
 
     private void EndTalkEndEvent() {

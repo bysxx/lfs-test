@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TalkToLunaTutorial : TutorialBase
+public class TalkToSomewon : TutorialBase
 {
     [Header("Tutorial Info")]
     [SerializeField] private DialogueGraph lunaTalk;

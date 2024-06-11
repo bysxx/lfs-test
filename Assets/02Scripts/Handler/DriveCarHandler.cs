@@ -6,9 +6,11 @@ public class DriveCarHandler : MonoBehaviour
 {
     [SerializeField] private Quest quest;
     [SerializeField] private GameObject car;
+    [SerializeField] private TutorialManager tutorialManager;
+    [SerializeField] private Transform playerSpawnPos;
 
     // Start is called before the first frame update
-    void Start()
+    private IEnumerator Start()
     {
         Access.QuestM.OnQuestRegisteredHandler += (quest) => {
             car.SetActive(true);
@@ -16,8 +18,14 @@ public class DriveCarHandler : MonoBehaviour
         };
 
         Access.QuestM.OnQuestCompletedHandler += (quest) => {
-            Access.Player.StopPlayer();
-            Access.UIM.FadeToScene("LobbyScene");
+            car.SetActive(false);
+            Access.Player.transform.position = playerSpawnPos.position;
+            Access.Player.transform.rotation = playerSpawnPos.rotation;
         };
+
+        yield return null;
+
+        tutorialManager.SetNextTutorial();
     }
+
 }

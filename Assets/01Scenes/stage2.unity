@@ -7056,6 +7056,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endTalk: {fileID: 11400000, guid: f4950ac11c387d547b33d2bc7a7900a0, type: 2}
+  nextScene: LobbyScene
+  curStage: 1
 --- !u!1001 &2142106256
 PrefabInstance:
   m_ObjectHideFlags: 0

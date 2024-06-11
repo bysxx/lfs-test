@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4958376434131588984
+--- !u!114 &-3168064448007032167
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,41 +9,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7d4b035e8545a04ca8b7c9c33635bcb, type: 3}
-  m_Name: Chat
+  m_Script: {fileID: 11500000, guid: 262e53baf2dabb94086de1b34f836012, type: 3}
+  m_Name: Event
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 232, y: 88}
+  position: {x: -488, y: -24}
   ports:
     keys:
-    - answers
     - input
     - output
     values:
-    - _fieldName: answers
-      _node: {fileID: -4958376434131588984}
-      _typeQualifiedName: System.Collections.Generic.List`1[[Dialogue.ChatNode+Answer,
-        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
     - _fieldName: input
-      _node: {fileID: -4958376434131588984}
+      _node: {fileID: -3168064448007032167}
       _typeQualifiedName: Dialogue.DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: answers 1
-        node: {fileID: -366575522572322844}
+      - fieldName: answers 0
+        node: {fileID: 3317678076700266979}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: output
-      _node: {fileID: -4958376434131588984}
+      _node: {fileID: -3168064448007032167}
       _typeQualifiedName: Dialogue.DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections: []
@@ -53,10 +42,10 @@ MonoBehaviour:
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
-  character: {fileID: 11400000, guid: 660e75534e996ee4799e5dc62a07d585, type: 2}
-  text: "\uD574\uBCF4\uACE0 \uC2F6\uC73C\uBA74 \uB2E4\uC2DC \uB9D0 \uAC78\uC5B4\uC918
-    \u3160 "
-  answers: []
+  eventName: LunaTalkStartEvent
+  trigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-366575522572322844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,8 +65,6 @@ MonoBehaviour:
     - answers
     - input
     - output
-    - answers 0
-    - answers 1
     values:
     - _fieldName: answers
       _node: {fileID: -366575522572322844}
@@ -105,15 +92,6 @@ MonoBehaviour:
       _node: {fileID: -366575522572322844}
       _typeQualifiedName: Dialogue.DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: answers 0
-      _node: {fileID: -366575522572322844}
-      _typeQualifiedName: Dialogue.ChatNode+Answer, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: input
         node: {fileID: 3582579776570491588}
@@ -121,26 +99,13 @@ MonoBehaviour:
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: answers 1
-      _node: {fileID: -366575522572322844}
-      _typeQualifiedName: Dialogue.ChatNode+Answer, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: input
-        node: {fileID: -4958376434131588984}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
+      _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
   character: {fileID: 11400000, guid: 660e75534e996ee4799e5dc62a07d585, type: 2}
-  text: "\uADF8\uB7FC \uC6B4\uC804\uC744 \uD574\uBCF4\uACE0 \uC2F6\uC9C0 \uC54A\uC544? "
-  answers:
-  - text: "\uC624 \uD574\uBCF4\uACE0 \uC2F6\uC5B4 "
-  - text: "\uAD73\uC774?  "
+  text: "\uADF8\uB7FC \uB9C8\uC9C0\uB9C9\uC73C\uB85C \uB9CC\uB4E4\uC5B4\uB0B8 \"\uC2E0\uC9C4\uD37C\uBE14\uB9AC\uCE74\"\uB97C
+    \uC6B4\uC804\uD574\uC11C \uC790\uB3D9\uCC28 \uC5ED\uC0AC\uB97C \uC644\uC131\uC2DC\uCF1C\uC918!"
+  answers: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,8 +122,9 @@ MonoBehaviour:
   - {fileID: 1473286273494573504}
   - {fileID: -366575522572322844}
   - {fileID: 3582579776570491588}
-  - {fileID: -4958376434131588984}
   - {fileID: 3317678076700266979}
+  - {fileID: 2884342909872475802}
+  - {fileID: -3168064448007032167}
   currentNode: {fileID: 3582579776570491588}
   isSkipable: 0
   isCancelable: 0
@@ -212,6 +178,52 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   quest: {fileID: 11400000, guid: c7f7c8f4b6f26408a9bcd46ef6c6181d, type: 2}
+--- !u!114 &2884342909872475802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 262e53baf2dabb94086de1b34f836012, type: 3}
+  m_Name: Event
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 568, y: 40}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 2884342909872475802}
+      _typeQualifiedName: Dialogue.DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: answers 0
+        node: {fileID: 3582579776570491588}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 2884342909872475802}
+      _typeQualifiedName: Dialogue.DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  eventName: LunaTalkEndEvent
+  trigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3317678076700266979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +281,9 @@ MonoBehaviour:
       - fieldName: input
         node: {fileID: -366575522572322844}
         reroutePoints: []
+      - fieldName: input
+        node: {fileID: -3168064448007032167}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -315,7 +330,7 @@ MonoBehaviour:
       _typeQualifiedName: Dialogue.DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: answers 0
+      - fieldName: output
         node: {fileID: -366575522572322844}
         reroutePoints: []
       _direction: 0
@@ -342,6 +357,9 @@ MonoBehaviour:
       - fieldName: input
         node: {fileID: 1473286273494573504}
         reroutePoints: []
+      - fieldName: input
+        node: {fileID: 2884342909872475802}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -349,6 +367,6 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   character: {fileID: 11400000, guid: 660e75534e996ee4799e5dc62a07d585, type: 2}
-  text: "\uADF8\uB7FC \uC6B4\uC804\uC744 \uD574\uBCF4\uC790"
+  text: "\uADF8\uB7FC \uAC00\uBCFC\uAE4C? \uC798\uBD80\uD0C1\uD574!"
   answers:
-  - text: "\uADF8\uB798 "
+  - text: "\uC751!"

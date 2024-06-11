@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stage2RoomEnterTutorial : TutorialBase {
+public class StageEnterTutorial : TutorialBase {
 
     [Header("Tutorial Info")]
     [SerializeField] private DialogueGraph stage2EnterTalk;
