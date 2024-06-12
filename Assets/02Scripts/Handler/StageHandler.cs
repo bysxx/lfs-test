@@ -11,13 +11,19 @@ public class StageHandler : MonoBehaviour
     // Start is called before the first frame update
     private IEnumerator Start()
     {
-        Access.QuestM.OnQuestRegisteredHandler += (quest) => {
-            cars.ForEach(car => car.SetActive(true));
-            Debug.Log("Car is activated");
-        };
+        Access.QuestM.OnQuestRegisteredHandler += OnQuestRegistered;
 
         yield return null;
 
         tutorialManager.SetNextTutorial();
+    }
+
+    private void OnQuestRegistered(Quest quest) {
+        cars.ForEach(car => car.SetActive(true));
+        Debug.Log("Car is activated");
+    }
+
+    private void OnDestroy() {
+        Access.QuestM.OnQuestRegisteredHandler -= OnQuestRegistered;
     }
 }

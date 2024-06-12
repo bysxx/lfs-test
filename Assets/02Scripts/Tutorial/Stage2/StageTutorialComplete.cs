@@ -21,13 +21,14 @@ public class StageTutorialComplete : TutorialBase
         }
     }
 
-    public override void Enter() {
+    public override void Enter(TutorialManager tutorialManager) {
         endTalk.BindEventAtEventNode("EndTalkEndEvent", EndTalkEndEvent);
         Access.DIalogueM.RegisterDialogue(endTalk);
     }
 
-    public override void Exit() {
+    public override void Exit(TutorialManager tutorialManager) {
         endTalk.RemoveEventAtEventNode("EndTalkEndEvent", EndTalkEndEvent);
+        Access.GameM.curStage = curStage + 1;
         Access.GameM.stageProgress[curStage] = true;
         Access.UIM.FadeToScene(nextScene);
     }

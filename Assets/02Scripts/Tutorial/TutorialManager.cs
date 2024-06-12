@@ -6,7 +6,7 @@ public class TutorialManager : MonoBehaviour
 {
     public List<TutorialBase> tutorials;
     private TutorialBase curTutorial;
-    private int curIdx = -1;
+    public int curIdx = -1;
 
     private void Update() {
         if (curTutorial != null)
@@ -15,7 +15,7 @@ public class TutorialManager : MonoBehaviour
 
     public void SetNextTutorial() {
 
-        if (curTutorial != null) curTutorial.Exit();
+        if (curTutorial != null) curTutorial.Exit(this);
 
         if (curIdx >= tutorials.Count - 1) {
             CompletedAllTutorials();
@@ -25,12 +25,11 @@ public class TutorialManager : MonoBehaviour
         curIdx++;
         curTutorial = tutorials[curIdx];
 
-        curTutorial.Enter();
+        curTutorial.Enter(this);
     }
 
     public void CompletedAllTutorials() {
         curTutorial = null;
-        Access.GameM.isTutorialCleared = true;
         Define.Log("Complete All");
         
     }

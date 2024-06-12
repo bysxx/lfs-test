@@ -21,13 +21,13 @@ public class SpecialBulletShotTutorial : TutorialBase {
         }
     }
 
-    public override void Enter() {
+    public override void Enter(TutorialManager tutorialManager) {
         specialBulletShotTutorialTalk.BindEventAtEventNode("SpecialBulletShotEvent", SpecialBulletShotEvent);
         Access.Player.P_DInfo.CurGunWeapon.CanShot = false;
         Access.DIalogueM.RegisterDialogue(specialBulletShotTutorialTalk);
     }
 
-    public override void Exit() {
+    public override void Exit(TutorialManager tutorialManager) {
         specialBulletShotTutorialTalk.RemoveEventAtEventNode("SpecialBulletShotEvent", SpecialBulletShotEvent);
     }
 

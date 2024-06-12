@@ -12,20 +12,29 @@ public class DriveCarHandler : MonoBehaviour
     // Start is called before the first frame update
     private IEnumerator Start()
     {
-        Access.QuestM.OnQuestRegisteredHandler += (quest) => {
-            car.SetActive(true);
-            Debug.Log("Car is activated");
-        };
-
-        Access.QuestM.OnQuestCompletedHandler += (quest) => {
-            car.SetActive(false);
-            Access.Player.transform.position = playerSpawnPos.position;
-            Access.Player.transform.rotation = playerSpawnPos.rotation;
-        };
+        Access.QuestM.OnQuestRegisteredHandler += OnQuestRegistered;
+        Access.QuestM.OnQuestCompletedHandler += OnQuestCompleted;
 
         yield return null;
 
         tutorialManager.SetNextTutorial();
+    }
+
+    private void OnQuestRegistered(Quest quest) {
+        car.SetActive(true);
+        Debug.Log("Car is activated");
+    }
+
+    private void OnQuestCompleted(Quest quest) {
+        car.SetActive(false);
+        Access.Player.transform.position = playerSpawnPos.position;
+        Access.Player.transform.rotation = playerSpawnPos.rotation;
+    }
+
+
+    private void OnDestroy() {
+        Access.QuestM.OnQuestRegisteredHandler -= OnQuestRegistered;
+        Access.QuestM.OnQuestCompletedHandler -= OnQuestCompleted;
     }
 
 }

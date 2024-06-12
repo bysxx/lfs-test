@@ -21,14 +21,14 @@ public class SpecialBulletGetTutorial : TutorialBase
         }
     }
 
-    public override void Enter() {
+    public override void Enter(TutorialManager tutorialManager) {
         specialBulletGetTutorialTalk.BindEventAtEventNode("BulletSpawnEvent", BulletSpawnEvent);
         specialBulletGetTutorialTalk.BindEventAtEventNode("PlayerMoveEvent", PlayerMoveEvent);
         Access.DIalogueM.RegisterDialogue(specialBulletGetTutorialTalk);
         Access.Player.StopPlayer();
     }
 
-    public override void Exit() {
+    public override void Exit(TutorialManager tutorialManager) {
         specialBulletGetTutorialTalk.RemoveEventAtEventNode("BulletSpawnEvent", BulletSpawnEvent);
         specialBulletGetTutorialTalk.RemoveEventAtEventNode("PlayerMoveEvent", PlayerMoveEvent);
     }

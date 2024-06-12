@@ -18,11 +18,11 @@ public class StageQuestComplete : TutorialBase {
         }
     }
 
-    public override void Enter() {
+    public override void Enter(TutorialManager tutorialManager) {
         
     }
 
-    public override void Exit() {
+    public override void Exit(TutorialManager tutorialManager) {
         if (nextTalk != null)
             Access.DIalogueM.RegisterDialogue(nextTalk);
     }

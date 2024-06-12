@@ -1357,6 +1357,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "UI Trigger",
+                    "type": "Button",
+                    "id": "18aa3d34-dceb-493f-9efe-c37920be651e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1610,6 +1619,17 @@
                     "processors": "StickDeadzone",
                     "groups": "",
                     "action": "Dial Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "50dcee3c-d22b-4dfd-8bb9-6272bf88daab",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UI Trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

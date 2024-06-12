@@ -19,13 +19,13 @@ public class StageEnterTutorial : TutorialBase {
         }
     }
 
-    public override void Enter() {
+    public override void Enter(TutorialManager tutorialManager) {
         stage2EnterTalk.BindEventAtEventNode("Stage2EnterEvent", Stage2EnterEvent);
         Access.DIalogueM.RegisterDialogue(stage2EnterTalk);
         Access.Player.StopPlayer();
     }
 
-    public override void Exit() {
+    public override void Exit(TutorialManager tutorialManager) {
         stage2EnterTalk.RemoveEventAtEventNode("Stage2EnterEvent", Stage2EnterEvent);
     }
 

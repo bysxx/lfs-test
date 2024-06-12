@@ -26,6 +26,7 @@ public class DialogueManager : DontDestroySingleton<DialogueManager>
     public event DialogueNextedHandler OnDialogueNexted;
 
     public DialogueGraph RegisterDialogue(DialogueGraph dialogueGraph) {
+        if (!dialogueGraph.IsAcceptable) return null;
         curDialogue = dialogueGraph;
         curDialogue.FindFirstNode();
         OnDialogueRegistered?.Invoke(curDialogue);

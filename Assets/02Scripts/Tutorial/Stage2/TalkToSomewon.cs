@@ -19,13 +19,13 @@ public class TalkToSomewon : TutorialBase
         }
     }
 
-    public override void Enter() {
+    public override void Enter(TutorialManager tutorialManager) {
         lunaTalk.BindEventAtEventNode("LunaTalkEndEvent", LunaTalkEndEvent);
         lunaTalk.BindEventAtEventNode("LunaTalkStartEvent", LunaTalkStartEvent);
 
     }
 
-    public override void Exit() {
+    public override void Exit(TutorialManager tutorialManager) {
         lunaTalk.RemoveEventAtEventNode("LunaTalkEndEvent", LunaTalkEndEvent);
         lunaTalk.RemoveEventAtEventNode("LunaTalkStartEvent", LunaTalkStartEvent);
     }

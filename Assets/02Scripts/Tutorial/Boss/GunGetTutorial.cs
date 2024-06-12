@@ -20,14 +20,14 @@ public class GunGetTutorial : TutorialBase {
         }
     }
 
-    public override void Enter() {
+    public override void Enter(TutorialManager tutorialManager) {
         Access.Player.StopPlayer();
         gunGetTutorialDialogue.BindEventAtEventNode("GunSpawnEvent", GunSpawn);
         Access.DIalogueM.RegisterDialogue(gunGetTutorialDialogue);
         
     }
 
-    public override void Exit() {
+    public override void Exit(TutorialManager tutorialManager) {
         gunGetTutorialDialogue.RemoveEventAtEventNode("GunSpawnEvent", GunSpawn);
     }
 

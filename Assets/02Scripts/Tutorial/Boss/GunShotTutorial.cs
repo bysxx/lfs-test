@@ -20,13 +20,13 @@ public class GunShotTutorial : TutorialBase {
         }
     }
 
-    public override void Enter() {
+    public override void Enter(TutorialManager tutorialManager) {
         gunShotTalk.BindEventAtEventNode("GunShotEvent", GunShotEvent);
         Access.DIalogueM.RegisterDialogue(gunShotTalk);
         Access.Player.P_DInfo.CurGunWeapon.CanShot = false;
     }
 
-    public override void Exit() {
+    public override void Exit(TutorialManager tutorialManager) {
         gunShotTalk.RemoveEventAtEventNode("GunShotEvent", GunShotEvent);
     }
 

@@ -21,12 +21,12 @@ public class BossPattern2Tutorial : TutorialBase {
         }
     }
 
-    public override void Enter() {
+    public override void Enter(TutorialManager tutorialManager) {
         bossPattern2TutorialTalk.BindEventAtEventNode("BossPattern2Event", BossPattern2Event);
         Access.DIalogueM.RegisterDialogue(bossPattern2TutorialTalk);
     }
 
-    public override void Exit() {
+    public override void Exit(TutorialManager tutorialManager) {
         bossPattern2TutorialTalk.RemoveEventAtEventNode("BossPattern2Event", BossPattern2Event);
     }
 

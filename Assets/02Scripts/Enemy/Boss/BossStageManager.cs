@@ -11,6 +11,7 @@ public class BossStageManager : NormalSingleton<BossStageManager>
 
     [Header("Game Info")]
     [SerializeField] private Transform playerSpawnPos;
+    [SerializeField] private DialogueGraph endStageTalk;
 
     [Header("Tutorial")]
     [SerializeField] private TutorialManager tutorialManager;
@@ -51,6 +52,7 @@ public class BossStageManager : NormalSingleton<BossStageManager>
 
     private void OnDestroy() {
         AnswerBullet.OnDestroyBullet -= OnDestroyAnswerBullet;
+        endStageTalk.RemoveEventAtEventNode("EndStageEvent", EndStageEvent);
     }
 
     public GunWeapon GunSpawn() {
@@ -114,4 +116,16 @@ public class BossStageManager : NormalSingleton<BossStageManager>
         Access.BossStageM.SpawnBoss();
 
     }
+
+    public void EndBossStage() {
+        endStageTalk.BindEventAtEventNode("EndStageEvent", EndStageEvent);
+        Access.DIalogueM.RegisterDialogue(endStageTalk);
+    }
+
+    private void EndStageEvent() {
+        Access.GameM.curStage = 3;
+        Access.GameM.stageProgress[2] = true;
+        Access.UIM.FadeToScene("LobbyScene");
+    }
+
 }
