@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: NPC
   m_EditorClassIdentifier: 
   textColor: {r: 1, g: 1, b: 1, a: 1}
-  talkerName: Luna
+  talkerName: "\uC544\uB2C8"

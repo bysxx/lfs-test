@@ -470,6 +470,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Dial Trigger",
+                    "type": "Value",
+                    "id": "1643177a-51d7-4518-b1e5-4012dcf2dd26",
+                    "expectedControlType": "Vector2",
+                    "processors": "StickDeadzone",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -734,6 +743,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Main UI Trigger ",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f3e18159-7134-47fb-b872-bb43ff7adcef",
+                    "path": "<XRController>{LeftHand}/{Primary2DAxis}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dial Trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1328,6 +1348,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Dial Trigger",
+                    "type": "Value",
+                    "id": "65616a8a-5cd0-48cb-9ffb-467f85361c77",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "UI Trigger",
+                    "type": "Button",
+                    "id": "18aa3d34-dceb-493f-9efe-c37920be651e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1570,6 +1608,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "ShotGun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "12dfd6a8-dd7d-4ddf-ab33-67e15d5b31ac",
+                    "path": "<XRController>{RightHand}/{Primary2DAxis}",
+                    "interactions": "",
+                    "processors": "StickDeadzone",
+                    "groups": "",
+                    "action": "Dial Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "50dcee3c-d22b-4dfd-8bb9-6272bf88daab",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UI Trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

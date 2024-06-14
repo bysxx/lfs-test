@@ -5,18 +5,25 @@ using UnityEngine;
 public class StageHandler : MonoBehaviour
 {
     [SerializeField] private Quest quest;
+    [SerializeField] private TutorialManager tutorialManager;
     [SerializeField] private List<GameObject> cars;
 
     // Start is called before the first frame update
-    void Start()
+    private IEnumerator Start()
     {
-        Access.QuestM.OnQuestRegisteredHandler += (quest) => {
-            cars.ForEach(car => car.SetActive(true));
-            Debug.Log("Car is activated");
-        };
+        Access.QuestM.OnQuestRegisteredHandler += OnQuestRegistered;
 
-        Access.QuestM.OnQuestCompletedHandler += (quest) => {
-            Access.SceneM.LoadScene("stage1-2", 3.0f);
-        };
+        yield return null;
+
+        tutorialManager.SetNextTutorial();
+    }
+
+    private void OnQuestRegistered(Quest quest) {
+        cars.ForEach(car => car.SetActive(true));
+        Debug.Log("Car is activated");
+    }
+
+    private void OnDestroy() {
+        Access.QuestM.OnQuestRegisteredHandler -= OnQuestRegistered;
     }
 }

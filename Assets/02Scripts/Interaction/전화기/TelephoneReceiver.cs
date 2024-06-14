@@ -17,7 +17,7 @@ public class PhoneReceiver : MonoBehaviour
 
     private void OnGrab(SelectEnterEventArgs args)
     {
-        dialController.enabled = true;
+        dialController.EnableCollider(true);
         Debug.Log("수화기 그랩됨");
     }
 
@@ -25,7 +25,7 @@ public class PhoneReceiver : MonoBehaviour
     {
         if (!args.isCanceled)
         {
-            dialController.enabled = false;
+            dialController.EnableCollider(false);
         }
     }
 }

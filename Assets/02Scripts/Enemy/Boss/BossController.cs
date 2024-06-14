@@ -45,6 +45,7 @@ public class BossController : Controller, IHitable {
     public void Dead() {
         Access.DIalogueM.RegisterDialogue(bossDeadDialogue);
         BossAnimator.SetTrigger("Die");
+        Access.BossStageM.EndBossStage();
         GetComponent<QuestReporter>().Report(2);
         Invoke(nameof(DeadEffect), 3.2f);
     }

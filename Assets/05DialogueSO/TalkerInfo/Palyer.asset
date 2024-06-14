@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Palyer
   m_EditorClassIdentifier: 
   textColor: {r: 1, g: 0.93410516, b: 0, a: 1}
-  talkerName: me
+  talkerName: "\uB098"

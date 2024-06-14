@@ -32,4 +32,5 @@ public class DialogueProvider : MonoBehaviour
     public void Provide(DialogueGraph graph) {
         Access.DIalogueM.RegisterDialogue(graph);
     }
+
 }

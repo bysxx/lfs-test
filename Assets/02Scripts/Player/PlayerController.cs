@@ -11,7 +11,10 @@ public class PlayerController : NormalSingleton<PlayerController>
     [field: SerializeField] public PlayerSInfo P_SInfo { get; set; }
 
     [field: SerializeField] private DynamicMoveProvider moveProvider { get; set; } = null;
+    [field: SerializeField] private ActionBasedContinuousTurnProvider turnProvider { get; set; } = null;
 
+    public bool CanMove { get; private set; }
+    public bool CanTurn { get; private set; }
 
     private void Start() {
         P_DInfo = new PlayerDInfo();
@@ -21,9 +24,20 @@ public class PlayerController : NormalSingleton<PlayerController>
     // stop player
     public void StopPlayer() {
         moveProvider.moveSpeed = 0;
+        turnProvider.turnSpeed = 0;
+        CanMove = false;
+        CanTurn = false;
+    }
+
+    public void StopOnlyMove() {
+        moveProvider.moveSpeed = 0;
+        CanMove = false;
     }
 
     public void MovePlayer() {
         moveProvider.moveSpeed = 1;
+        turnProvider.turnSpeed = 60;
+        CanMove = true;
+        CanTurn = true;
     }
 }

@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class ChannelDialController : MonoBehaviour
 {
@@ -10,30 +12,42 @@ public class ChannelDialController : MonoBehaviour
     private int[] angleToChannelMapping; // 각도와 채널 매핑
     private int previousChannel = -1; // 이전 채널을 저장하는 변수
 
+    [SerializeField] private InputActionReference leftActionReference;
+    [SerializeField] private InputActionReference rightActionReference;
+    private InputActionReference curRef;
+
     private void Start()
     {
         // 각도와 채널을 수작업으로 매핑합니다.
         angleToChannelMapping = new int[] { 3, 4, 5, 6, 0, 1, 2 };
     }
 
-    private void Update()
-    {
+    public void SelectEnterDial(SelectEnterEventArgs arg) {
+        int val = arg.interactorObject.interactionLayers.value;
 
-        if (Input.GetButton("Fire1"))
-        {
-            float rotationInput = Input.GetAxis("Horizontal");
-
-            if (Mathf.Abs(rotationInput) > 0.1f)
-            {
-                RotateDial(rotationInput);
-            }
+        if ((val & InteractionLayerMask.GetMask("LeftDirect")) == InteractionLayerMask.GetMask("LeftDirect")) {
+            leftActionReference.action.performed += RotateDial;
+            curRef = leftActionReference;
         }
+        else if ((val & InteractionLayerMask.GetMask("RightDirect")) == InteractionLayerMask.GetMask("RightDirect")) {
+            rightActionReference.action.performed += RotateDial;
+            curRef = rightActionReference;
+        }
+
+        Access.Player.StopPlayer();
     }
 
-    private void RotateDial(float direction)
+    public void SelectExitDial(SelectExitEventArgs arg) {
+        leftActionReference.action.performed -= RotateDial;
+        rightActionReference.action.performed -= RotateDial;
+        Access.Player.MovePlayer();
+        curRef = null;
+    }
+
+    private void RotateDial(InputAction.CallbackContext obj)
     {
         // 회전량을 계산합니다.
-        float rotationAmount = direction * rotationSpeed * Time.deltaTime;
+        float rotationAmount = curRef.action.ReadValue<Vector2>().x * rotationSpeed * Time.deltaTime;
 
         // 현재 회전값을 가져옵니다.
         float currentZRotation = transform.rotation.eulerAngles.z;

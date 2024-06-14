@@ -23,12 +23,12 @@ public class BossSpawnTutorial : TutorialBase {
         }
     }
 
-    public override void Enter() {
+    public override void Enter(TutorialManager tutorialManager) {
         bossPattern1Talk.BindEventAtEventNode("BossPattern1Event", BossPattern1Event);
         Access.DIalogueM.RegisterDialogue(bossPattern1Talk);
     }
 
-    public override void Exit() {
+    public override void Exit(TutorialManager tutorialManager) {
         bossPattern1Talk.RemoveEventAtEventNode("BossPattern1Event", BossPattern1Event);
     }
 

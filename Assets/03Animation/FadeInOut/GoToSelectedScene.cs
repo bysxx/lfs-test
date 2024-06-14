@@ -23,7 +23,6 @@ public class GoToSelectedScene : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         if (!string.IsNullOrEmpty(sceneName)) Access.SceneM.LoadScene(sceneName);
-        else Debug.LogError("SceneName is null or empty.");
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
