@@ -1,10 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System;
-using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.InputSystem;
-using UnityEditor.Rendering;
-using UnityEditor.ShaderGraph.Internal;
 
 public class DialController : MonoBehaviour
 {
