@@ -53,6 +53,9 @@
 **로비 씬**
 - 각 스테이지 연결 + 스토리
 
+## 기능 차트(구)
+![323319752-c07dfcb5-1e1e-455d-99af-0e79d33403b5](https://github.com/bysxx/project-v/assets/87707867/b50e5de7-f96f-4774-b83c-45ccdf503f22)
+
 ## 사용 기술/스택
 
 **Tools**
