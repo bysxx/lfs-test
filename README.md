@@ -78,7 +78,7 @@
 - Notion: 문서 관리 도구
 
 **Library**
-- VRTK: VR 프로젝트 개발 툴킷 (상호작용, 운동, UI 등 구현)
+- XR Interaction Toolkit
 
 **Stack**
 - C#: Unity에서 사용되는 주요 프로그래밍 언어 (게임 로직 및 상호작용 구현)
